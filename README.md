@@ -6,7 +6,7 @@
 This repository contains the **official replication package** accompanying the paper:
 
 > **Reusing Policy-as-Code Across CI/CD and Kubernetes Admission Control: An Empirical Assessment of Governance Consistency**  
-> **Luís Nogueira** and **Jorge Coelho**  
+> **Luís Nogueira** and **Alice Resende**  
 > *Computers*, **2026**, 15(7), 453  
 > https://doi.org/10.3390/computers15070453
 
@@ -221,7 +221,7 @@ If you use this repository in your research, please cite:
 
 ```bibtex
 @Article{computers15070453,
-  AUTHOR  = {Nogueira, Luís and Coelho, Jorge},
+  AUTHOR  = {Nogueira, Luís and Resende, Alice},
   TITLE   = {Reusing Policy-as-Code Across CI/CD and Kubernetes Admission Control: An Empirical Assessment of Governance Consistency},
   JOURNAL = {Computers},
   YEAR    = {2026},
