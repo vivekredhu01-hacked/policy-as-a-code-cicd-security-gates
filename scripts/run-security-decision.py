@@ -64,7 +64,12 @@ def build_input(args: argparse.Namespace, documents: list[dict[str, Any]]) -> di
 
 def extract_decision(result: list[dict[str, Any]]) -> dict[str, Any]:
     messages = []
+    evaluated = False
     for item in result:
+        if not isinstance(item, dict):
+            continue
+        if item.get("successes", 0):
+            evaluated = True
         for key in ("failures", "warnings"):
             for entry in item.get(key, []):
                 message = entry.get("msg")
@@ -72,9 +77,11 @@ def extract_decision(result: list[dict[str, Any]]) -> dict[str, Any]:
                     try:
                         messages.append(json.loads(message))
                     except json.JSONDecodeError:
-                        pass
+                        raise RuntimeError("Conftest returned an invalid decision record")
     if messages:
         return messages[0]
+    if not evaluated:
+        raise RuntimeError("Conftest returned no successful policy evaluation")
     return {
         "schema_version": "decision/v1",
         "decision": "PASS",

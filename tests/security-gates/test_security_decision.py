@@ -1,4 +1,5 @@
 import json
+import importlib.util
 import subprocess
 import sys
 import tempfile
@@ -9,6 +10,10 @@ from pathlib import Path
 ROOT = Path(__file__).parents[2]
 RUNNER = ROOT / "scripts" / "run-security-decision.py"
 ARTIFACTS = ROOT / "artifacts"
+
+spec = importlib.util.spec_from_file_location("run_security_decision", RUNNER)
+runner = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(runner)
 
 
 class SecurityDecisionRunnerTests(unittest.TestCase):
@@ -52,6 +57,15 @@ class SecurityDecisionRunnerTests(unittest.TestCase):
         decision = self.run_decision("F06", 0)
         self.assertEqual(decision["decision"], "PASS")
         self.assertTrue(decision["deployment_allowed"])
+
+    def test_empty_policy_result_fails_closed(self):
+        with self.assertRaisesRegex(RuntimeError, "no successful policy evaluation"):
+            runner.extract_decision([])
+
+    def test_invalid_policy_message_fails_closed(self):
+        result = [{"failures": [{"msg": "not-json"}]}]
+        with self.assertRaisesRegex(RuntimeError, "invalid decision record"):
+            runner.extract_decision(result)
 
 
 if __name__ == "__main__":
