@@ -1,0 +1,65 @@
+{
+  "SchemaVersion": 2,
+  "Trivy": {
+    "Version": "0.76.1"
+  },
+  "ReportID": "01a198c1-eef2-70f6-ba08-9ca29ee73802",
+  "CreatedAt": "2026-11-01T20:16:48.882064Z",
+  "ArtifactID": "sha256:e2520b1d24d5c365e4761e97e8ea15a4ae569028913ad4c23c3505af8de2a364",
+  "ArtifactName": "policy-gate-f04:clean",
+  "ArtifactType": "container_image",
+  "Metadata": {
+    "Size": 2048,
+    "ImageID": "sha256:79ae63ce6551e877df9a91d69bb5213b4a67bf0d64d47eda0838e000155d03c0",
+    "DiffIDs": [
+      "sha256:502f0100d63aee4e4e917ac50bc8d6551b43466e47320258c026c74e997999bb"
+    ],
+    "RepoTags": [
+      "policy-gate-f04:clean"
+    ],
+    "RepoDigests": [
+      "policy-gate-f04@sha256:79ae63ce6551e877df9a91d69bb5213b4a67bf0d64d47eda0838e000155d03c0"
+    ],
+    "Reference": "policy-gate-f04:clean",
+    "ImageConfig": {
+      "architecture": "arm64",
+      "created": "2026-11-01T20:13:39.688437304Z",
+      "history": [
+        {
+          "created": "2026-11-01T20:13:39Z",
+          "created_by": "LABEL org.opencontainers.image.title=policy-gate-f04-clean",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2026-11-01T20:13:39Z",
+          "created_by": "COPY app.txt /app.txt # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        }
+      ],
+      "os": "linux",
+      "rootfs": {
+        "type": "layers",
+        "diff_ids": [
+          "sha256:502f0100d63aee4e4e917ac50bc8d6551b43466e47320258c026c74e997999bb"
+        ]
+      },
+      "config": {
+        "Env": [
+          "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+        ],
+        "Labels": {
+          "org.opencontainers.image.title": "policy-gate-f04-clean"
+        },
+        "WorkingDir": "/"
+      }
+    },
+    "Layers": [
+      {
+        "Size": 2048,
+        "Digest": "sha256:b70b81abfcfcd2ef5a856ea28d10a583946eff475ceaf84842b1b5c98fb44e28",
+        "DiffID": "sha256:502f0100d63aee4e4e917ac50bc8d6551b43466e47320258c026c74e997999bb"
+      }
+    ]
+  }
+}

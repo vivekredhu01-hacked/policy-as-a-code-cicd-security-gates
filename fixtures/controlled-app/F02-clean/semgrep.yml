@@ -1,0 +1,12 @@
+rules:
+  - id: controlled-no-eval
+    languages: [javascript]
+    severity: ERROR
+    message: "Controlled F02 source vulnerability: dynamic evaluation is prohibited."
+    metadata:
+      severity: high
+      requirement_ids:
+        - SSDF-PW.7
+        - ASVS-V5
+    patterns:
+      - pattern: eval(...)

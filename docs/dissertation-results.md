@@ -283,19 +283,19 @@ was measured using `System.Diagnostics.Stopwatch` in PowerShell 5.1.
 
 | Operation | N | Avg (ms) | Min (ms) | Max (ms) | SD (ms) |
 |---|---|---|---|---|---|
-| M1 — `kubectl --dry-run=client` (baseline, no policy) | 19 | 56.8 | 52.4 | 61.6 | 1.9 |
-| M2 — `conftest test` (all 29 manifests, 9 rules) | 19 | 56.3 | 53.7 | 59.6 | 1.7 |
-| M3 — `kubectl --dry-run=server` (compliant, Gatekeeper) | 19 | _pending_ | _pending_ | _pending_ | _pending_ |
-| M4 — `kubectl --dry-run=server` (non-compliant, Gatekeeper) | 19 | _pending_ | _pending_ | _pending_ | _pending_ |
+| M1 — `kubectl --dry-run=client` (baseline, no policy) | 19 | 65.5 | 62.6 | 70.2 | 2.1 |
+| M2 — `conftest test` (all 29 manifests, 9 rules) | 19 | 46.3 | 43.6 | 56.2 | 2.9 |
+| M3 — `kubectl --dry-run=server` (compliant, Gatekeeper) | 19 | 70.1 | 68.3 | 73.1 | 1.2 |
+| M4 — `kubectl --dry-run=server` (non-compliant, Gatekeeper) | 19 | 75.8 | 67.7 | 172.3 | 22.9 |
 
-> M3 and M4 require Docker Desktop and the kind cluster with Gatekeeper.
-> Run `scripts/measure-overhead.ps1` again after starting the cluster.
+The measurements were collected with Docker Desktop, a kind cluster, and
+Gatekeeper running locally.
 
 | Derived Metric | Value | Derivation |
 |---|---|---|
-| CI policy overhead (M2 − M1) | −0.5 ms | Average difference: 56.3 − 56.8 |
-| CI overhead factor (M2 / M1) | 1.0× | 56.3 / 56.8 |
-| Admission rejection delta (M4 − M3) | _pending_ | Additional time for constraint evaluation and violation reporting |
+| CI policy overhead (M2 − M1) | −19.2 ms | Average difference: 46.3 − 65.5 |
+| CI overhead factor (M2 / M1) | 0.7× | 46.3 / 65.5 |
+| Admission rejection delta (M4 − M3) | 5.7 ms | Additional time for constraint evaluation and violation reporting |
 
 ### Interpretation
 

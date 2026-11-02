@@ -1,0 +1,151 @@
+name: Source security gates
+
+on:
+  workflow_dispatch:
+    inputs:
+      fixture_id:
+        description: F01, F06, F02, or F02-clean
+        required: true
+        type: choice
+        options:
+          - F01
+          - F06
+          - F02
+          - F02-clean
+      pipeline:
+        description: Comparative pipeline condition
+        required: true
+        type: choice
+        options:
+          - proposed
+          - baseline
+
+permissions:
+  contents: read
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out fixture commit
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Conftest
+        shell: bash
+        run: |
+          set -euo pipefail
+          version="0.67.1"
+          curl --fail --location --silent --show-error \
+            "https://github.com/open-policy-agent/conftest/releases/download/v${version}/conftest_${version}_Linux_x86_64.tar.gz" \
+            | tar -xz -C /tmp
+          sudo install /tmp/conftest /usr/local/bin/conftest
+
+      - name: Install Gitleaks
+        if: inputs.fixture_id == 'F01' || inputs.fixture_id == 'F06'
+        shell: bash
+        run: |
+          set -euo pipefail
+          version="8.30.1"
+          curl --fail --location --silent --show-error \
+            "https://github.com/gitleaks/gitleaks/releases/download/v${version}/gitleaks_${version}_linux_x64.tar.gz" \
+            | tar -xz -C /tmp gitleaks
+          sudo install /tmp/gitleaks /usr/local/bin/gitleaks
+          gitleaks version
+
+      - name: Install Semgrep
+        if: inputs.fixture_id == 'F02' || inputs.fixture_id == 'F02-clean'
+        run: python -m pip install --disable-pip-version-check semgrep==1.182.0
+
+      - name: Run source scanner and normalize evidence
+        shell: bash
+        env:
+          FIXTURE_ID: ${{ inputs.fixture_id }}
+          PIPELINE: ${{ inputs.pipeline }}
+          COMMIT_ID: ${{ github.sha }}
+          RUN_ID: github-${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          case "$FIXTURE_ID" in
+            F01)
+              source_path="fixtures/controlled-app/F01-secret"
+              gate_id="secret-detection"
+              mkdir -p artifacts/workflow
+              set +e
+              gitleaks detect --source "$source_path" --no-git --redact \
+                --report-format json --report-path artifacts/workflow/raw.json
+              scanner_exit=$?
+              set -e
+              python scripts/normalize-gitleaks.py \
+                --report artifacts/workflow/raw.json \
+                --output artifacts/workflow/evidence.json \
+                --fixture-id "$FIXTURE_ID" --commit-id "$COMMIT_ID" \
+                --pipeline "$PIPELINE" --stage source --run-id "$RUN_ID" \
+                --tool-version "$(gitleaks version)" --exit-code "$scanner_exit" \
+                --raw-artifact artifacts/workflow/raw.json
+              ;;
+            F06)
+              source_path="fixtures/controlled-app/clean"
+              gate_id="secret-detection"
+              mkdir -p artifacts/workflow
+              set +e
+              gitleaks detect --source "$source_path" --no-git --redact \
+                --report-format json --report-path artifacts/workflow/raw.json
+              scanner_exit=$?
+              set -e
+              python scripts/normalize-gitleaks.py \
+                --report artifacts/workflow/raw.json \
+                --output artifacts/workflow/evidence.json \
+                --fixture-id "$FIXTURE_ID" --commit-id "$COMMIT_ID" \
+                --pipeline "$PIPELINE" --stage source --run-id "$RUN_ID" \
+                --tool-version "$(gitleaks version)" --exit-code "$scanner_exit" \
+                --raw-artifact artifacts/workflow/raw.json
+              ;;
+            F02|F02-clean)
+              source_path="fixtures/controlled-app/F02-source"
+              if [ "$FIXTURE_ID" = "F02-clean" ]; then
+                source_path="fixtures/controlled-app/F02-clean"
+              fi
+              gate_id="source-analysis"
+              mkdir -p artifacts/workflow
+              set +e
+              semgrep scan --config "$source_path/semgrep.yml" --error \
+                --json --output artifacts/workflow/raw.json "$source_path"
+              scanner_exit=$?
+              set -e
+              python scripts/normalize-semgrep.py \
+                --report artifacts/workflow/raw.json \
+                --output artifacts/workflow/evidence.json \
+                --fixture-id "$FIXTURE_ID" --commit-id "$COMMIT_ID" \
+                --pipeline "$PIPELINE" --stage source --run-id "$RUN_ID" \
+                --tool-version "$(semgrep --version)" --exit-code "$scanner_exit" \
+                --raw-artifact artifacts/workflow/raw.json
+              ;;
+            *)
+              echo "Unsupported fixture: $FIXTURE_ID" >&2
+              exit 2
+              ;;
+          esac
+
+          set +e
+          python scripts/run-security-decision.py \
+            --evidence artifacts/workflow/evidence.json \
+            --output artifacts/workflow/decision.json \
+            --fixture-id "$FIXTURE_ID" --commit-id "$COMMIT_ID" \
+            --pipeline "$PIPELINE" --stage source --gate-id "$gate_id" \
+            --run-id "$RUN_ID"
+          decision_exit=$?
+          set -e
+          cat artifacts/workflow/decision.json
+          exit "$decision_exit"
+
+      - name: Upload source security artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: source-security-${{ inputs.fixture_id }}-${{ inputs.pipeline }}-${{ github.run_id }}
+          path: artifacts/workflow/

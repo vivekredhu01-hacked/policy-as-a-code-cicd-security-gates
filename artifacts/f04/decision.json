@@ -1,0 +1,1979 @@
+{
+  "completed_gates": [
+    "container-analysis"
+  ],
+  "decision": "BLOCK",
+  "deployment_allowed": false,
+  "missing_required_gates": [],
+  "policy_version": "0.1.0",
+  "reasons": [
+    {
+      "finding_id": "trivy:CVE-2022-40897",
+      "gate_id": "container-analysis",
+      "message": "pypa-setuptools: Regular Expression Denial of Service (ReDoS) in package_index.py",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2023-31484",
+      "gate_id": "container-analysis",
+      "message": "perl: CPAN.pm does not verify TLS certificates when downloading distributions over HTTPS",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2023-45853",
+      "gate_id": "container-analysis",
+      "message": "zlib: integer overflow and resultant heap-based buffer overflow in zipOpenNewFileInZip4_6",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "critical"
+    },
+    {
+      "finding_id": "trivy:CVE-2023-4641",
+      "gate_id": "container-analysis",
+      "message": "shadow-utils: possible password leak during passwd(1) change",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2023-50495",
+      "gate_id": "container-analysis",
+      "message": "ncurses: segmentation fault via _nc_wrap_entry()",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2023-52425",
+      "gate_id": "container-analysis",
+      "message": "expat: parsing large tokens can trigger a denial of service",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2023-5752",
+      "gate_id": "container-analysis",
+      "message": "pip: Mercurial configuration injectable in repo revision when installing via pip",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2023-7104",
+      "gate_id": "container-analysis",
+      "message": "sqlite: heap-buffer-overflow at sessionfuzz",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2024-10041",
+      "gate_id": "container-analysis",
+      "message": "pam: libpam: Libpam vulnerable to read hashed password",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2024-12133",
+      "gate_id": "container-analysis",
+      "message": "libtasn1: Inefficient DER Decoding in libtasn1 Leading to Potential Remote DoS",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2024-12243",
+      "gate_id": "container-analysis",
+      "message": "gnutls: GnuTLS Impacted by Inefficient DER Decoding in libtasn1 Leading to Remote DoS",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2024-22365",
+      "gate_id": "container-analysis",
+      "message": "pam: allowing unprivileged user to block another user namespace",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2024-26462",
+      "gate_id": "container-analysis",
+      "message": "krb5: Memory leak at /krb5/src/kdc/ndr.c",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2024-28757",
+      "gate_id": "container-analysis",
+      "message": "expat: XML Entity Expansion",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2024-50602",
+      "gate_id": "container-analysis",
+      "message": "libexpat: expat: DoS via XML_ResumeParser",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2024-56406",
+      "gate_id": "container-analysis",
+      "message": "perl: Perl 5.34, 5.36, 5.38 and 5.40 are vulnerable to a heap buffer overflow when transliterating non-ASCII bytes",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2024-6345",
+      "gate_id": "container-analysis",
+      "message": "pypa/setuptools: Remote code execution via download functions in the package_index module in pypa/setuptools",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2024-8176",
+      "gate_id": "container-analysis",
+      "message": "libexpat: expat: Improper Restriction of XML Entity Expansion Depth in libexpat",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2025-0395",
+      "gate_id": "container-analysis",
+      "message": "glibc: buffer overflow in the GNU C Library's assert()",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2025-1390",
+      "gate_id": "container-analysis",
+      "message": "libcap: pam_cap: Fix potential configuration parsing error",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2025-14831",
+      "gate_id": "container-analysis",
+      "message": "gnutls: GnuTLS: Denial of Service via excessive resource consumption during certificate verification",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2025-15467",
+      "gate_id": "container-analysis",
+      "message": "openssl: OpenSSL: Remote code execution or Denial of Service via oversized Initialization Vector in CMS parsing",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2025-15649",
+      "gate_id": "container-analysis",
+      "message": "perl-IO-Compress: perl-IO-Compress: Denial of Service via malformed DOS date in zip header",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2025-24528",
+      "gate_id": "container-analysis",
+      "message": "krb5: overflow when calculating ulog block size",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2025-30258",
+      "gate_id": "container-analysis",
+      "message": "gnupg: verification DoS due to a malicious subkey in the keyring",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2025-31115",
+      "gate_id": "container-analysis",
+      "message": "xz: XZ has a heap-use-after-free bug in threaded .xz decoder",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2025-32988",
+      "gate_id": "container-analysis",
+      "message": "gnutls: Vulnerability in GnuTLS otherName SAN export",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2025-32989",
+      "gate_id": "container-analysis",
+      "message": "gnutls: Vulnerability in GnuTLS SCT extension parsing",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2025-32990",
+      "gate_id": "container-analysis",
+      "message": "gnutls: Vulnerability in GnuTLS certtool template parsing",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2025-3576",
+      "gate_id": "container-analysis",
+      "message": "krb5: Kerberos RC4-HMAC-MD5 Checksum Vulnerability Enabling Message Spoofing via MD5 Collisions",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2025-40909",
+      "gate_id": "container-analysis",
+      "message": "perl: Perl threads have a working directory race condition where file operations may target unintended paths",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2025-4598",
+      "gate_id": "container-analysis",
+      "message": "systemd-coredump: race condition that allows a local attacker to crash a SUID program and gain read access to the resulting core dump",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2025-47273",
+      "gate_id": "container-analysis",
+      "message": "setuptools: Path Traversal Vulnerability in setuptools PackageIndex",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2025-4802",
+      "gate_id": "container-analysis",
+      "message": "glibc: static setuid binary dlopen may incorrectly search LD_LIBRARY_PATH",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2025-59375",
+      "gate_id": "container-analysis",
+      "message": "firefox: thunderbird: expat: libexpat in Expat allows attackers to trigger large dynamic memory allocations via a small document that is submitted for parsing",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2025-6020",
+      "gate_id": "container-analysis",
+      "message": "linux-pam: Linux-pam directory Traversal",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2025-6395",
+      "gate_id": "container-analysis",
+      "message": "gnutls: NULL pointer dereference in _gnutls_figure_common_ciphersuite()",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2025-66382",
+      "gate_id": "container-analysis",
+      "message": "libexpat: libexpat: Denial of service via crafted file processing",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2025-68972",
+      "gate_id": "container-analysis",
+      "message": "gnupg: GnuPG: Signature bypass via form feed character in signed messages",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2025-68973",
+      "gate_id": "container-analysis",
+      "message": "GnuPG: GnuPG: Information disclosure and potential arbitrary code execution via out-of-bounds write",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2025-69419",
+      "gate_id": "container-analysis",
+      "message": "openssl: OpenSSL: Arbitrary code execution due to out-of-bounds write in PKCS#12 processing",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2025-69421",
+      "gate_id": "container-analysis",
+      "message": "openssl: OpenSSL: Denial of Service via malformed PKCS#12 file processing",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2025-6965",
+      "gate_id": "container-analysis",
+      "message": "sqlite: Integer Truncation in SQLite",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2025-69720",
+      "gate_id": "container-analysis",
+      "message": "ncurses: ncurses: Buffer overflow vulnerability may lead to arbitrary code execution.",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2025-7458",
+      "gate_id": "container-analysis",
+      "message": "sqlite: SQLite integer overflow",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "critical"
+    },
+    {
+      "finding_id": "trivy:CVE-2025-7709",
+      "gate_id": "container-analysis",
+      "message": "An integer overflow exists in the  FTS5 https://sqlite.org/fts5.html e ...",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2025-8058",
+      "gate_id": "container-analysis",
+      "message": "glibc: Double free in glibc",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2025-8869",
+      "gate_id": "container-analysis",
+      "message": "pip: pip missing checks on symbolic link extraction",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2025-9230",
+      "gate_id": "container-analysis",
+      "message": "openssl: Out-of-bounds read & write in RFC 3211 KEK Unwrap",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-0915",
+      "gate_id": "container-analysis",
+      "message": "glibc: glibc: Information disclosure via zero-valued network query",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-102010",
+      "gate_id": "container-analysis",
+      "message": "gcc-toolset-15-gcc: gcc: gcc-toolset-16: gcc: Denial of Service via use-after-free in binary heap erase_if",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-102633",
+      "gate_id": "container-analysis",
+      "message": "expat: expat: Denial of Service via integer overflow in expat_realloc",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-103111",
+      "gate_id": "container-analysis",
+      "message": "pcre2: pcre2: Out-of-bounds write via crafted regular expression",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-107708",
+      "gate_id": "container-analysis",
+      "message": "krb5: krb5: Denial of Service via malformed PAC in S4U2Proxy requests",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-107778",
+      "gate_id": "container-analysis",
+      "message": "krb5: krb5: Denial of Service via crafted forwarded credentials",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-113351",
+      "gate_id": "container-analysis",
+      "message": "expat: expat: Denial of Service via improper memory tracking in XML_ParserReset",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-11822",
+      "gate_id": "container-analysis",
+      "message": "sqlite: SQLite: Arbitrary code execution via crafted FTS5 full-text search data",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-11824",
+      "gate_id": "container-analysis",
+      "message": "sqlite: SQLite: Arbitrary code execution and crash via heap-based buffer overflow in FTS5",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-119373",
+      "gate_id": "container-analysis",
+      "message": "sqlite: sqlite: Denial of service via heap-based buffer overflow in FTS5",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-119378",
+      "gate_id": "container-analysis",
+      "message": "sqlite: sqlite: Denial of Service via use-after-free in R-Tree extension",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-119586",
+      "gate_id": "container-analysis",
+      "message": "sqlite: sqlite: Arbitrary command execution via .recover command",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-119591",
+      "gate_id": "container-analysis",
+      "message": "sqlite: sqlite: Denial of Service via stack exhaustion in countOfViewOptimization()",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-12087",
+      "gate_id": "container-analysis",
+      "message": "perl-Socket: perl-Socket: Information Disclosure due to Out-of-Bounds Read",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-13221",
+      "gate_id": "container-analysis",
+      "message": "perl: Perl: Incorrect regular expression processing via large regular expressions",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "critical"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-13346",
+      "gate_id": "container-analysis",
+      "message": "pip: pip: Arbitrary file installation via malicious package indexes",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-13595",
+      "gate_id": "container-analysis",
+      "message": "util-linux: util-linux: heap use-after-free in libblkid nested partition probing",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-13757",
+      "gate_id": "container-analysis",
+      "message": "p11-kit: Stack exhaustion via unbounded recursion in RPC attribute parsing",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-15059",
+      "gate_id": "container-analysis",
+      "message": "systemd: systemd-oomd: Unprivileged users can terminate arbitrary processes via IPC API",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-15534",
+      "gate_id": "container-analysis",
+      "message": "perl: Perl: Arbitrary code execution via out-of-bounds memory access in regular expression engine.",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-16742",
+      "gate_id": "container-analysis",
+      "message": "systemd: systemd-homed: Local privilege escalation via missing home-record signature verification",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-18374",
+      "gate_id": "container-analysis",
+      "message": "glibc: glibc: Heap buffer overflow via attacker-controlled fopen mode string",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-18477",
+      "gate_id": "container-analysis",
+      "message": "tar: tar: TOCTOU in incremental dumpdir 'X' rename handling allows restore path escape",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-18508",
+      "gate_id": "container-analysis",
+      "message": "tar: tar: --one-top-level hardlink targets not confined to top-level directory enabling arbitrary file overwrite",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-18938",
+      "gate_id": "container-analysis",
+      "message": "p11-kit: Integer overflow in RPC attribute-array length calculation can under-allocate nested attribute storage on 32 bit systems",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-19487",
+      "gate_id": "container-analysis",
+      "message": "perl: Perl: Incorrect regular expression matching can lead to wrong access or filtering decisions.",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-19499",
+      "gate_id": "container-analysis",
+      "message": "glibc: Buffer Overflow in strfmon right-justification padding",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-19542",
+      "gate_id": "container-analysis",
+      "message": "glibc: Fix out-of-bounds array write in tdelete",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-2219",
+      "gate_id": "container-analysis",
+      "message": "It was discovered that dpkg-deb (a component of dpkg, the Debian packa ...",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-24049",
+      "gate_id": "container-analysis",
+      "message": "wheel: wheel: Privilege Escalation or Arbitrary Code Execution via malicious wheel file unpacking",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-25210",
+      "gate_id": "container-analysis",
+      "message": "libexpat: libexpat: Information disclosure and data integrity issues due to integer overflow in buffer reallocation",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-27171",
+      "gate_id": "container-analysis",
+      "message": "zlib: zlib: Denial of Service via infinite loop in CRC32 combine functions",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-27456",
+      "gate_id": "container-analysis",
+      "message": "util-linux: TOCTOU in the mount program when setting up loop devices",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-28387",
+      "gate_id": "container-analysis",
+      "message": "openssl: OpenSSL: Arbitrary code execution due to use-after-free in DANE TLSA authentication",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-28388",
+      "gate_id": "container-analysis",
+      "message": "openssl: OpenSSL: Denial of Service due to NULL pointer dereference in delta CRL processing",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-28389",
+      "gate_id": "container-analysis",
+      "message": "openssl: OpenSSL: Denial of Service vulnerability in CMS processing",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-28390",
+      "gate_id": "container-analysis",
+      "message": "openssl: OpenSSL: Denial of Service due to NULL pointer dereference in CMS EnvelopedData processing",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-29111",
+      "gate_id": "container-analysis",
+      "message": "systemd: systemd: Arbitrary code execution or Denial of Service via spurious IPC API call data",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-31789",
+      "gate_id": "container-analysis",
+      "message": "openssl: OpenSSL: Heap buffer overflow on 32-bit systems from large X.509 certificate processing",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "critical"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-31790",
+      "gate_id": "container-analysis",
+      "message": "openssl: openssl: Information Disclosure from Uninitialized Memory via Invalid RSA Public Key",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-3184",
+      "gate_id": "container-analysis",
+      "message": "util-linux: util-linux: Access control bypass due to improper hostname canonicalization",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-3219",
+      "gate_id": "container-analysis",
+      "message": "pip: pip: Incorrect file installation due to improper archive handling",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-32776",
+      "gate_id": "container-analysis",
+      "message": "libexpat: libexpat: Denial of Service due to NULL pointer dereference",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-32777",
+      "gate_id": "container-analysis",
+      "message": "libexpat: libexpat: Denial of Service via infinite loop in DTD content parsing",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-32778",
+      "gate_id": "container-analysis",
+      "message": "libexpat: libexpat: Denial of Service via NULL pointer dereference after out-of-memory condition",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-33845",
+      "gate_id": "container-analysis",
+      "message": "gnutls: GnuTLS: Denial of Service via DTLS zero-length fragment",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "critical"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-33846",
+      "gate_id": "container-analysis",
+      "message": "gnutls: GnuTLS: Denial of Service via heap buffer overflow in DTLS handshake fragment reassembly",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-34182",
+      "gate_id": "container-analysis",
+      "message": "openssl: CMS AuthEnvelopedData Processing May Accept Forged Messages",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-34743",
+      "gate_id": "container-analysis",
+      "message": "xz: XZ Utils: Denial of Service via buffer overflow in index decoding",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-3833",
+      "gate_id": "container-analysis",
+      "message": "gnutls: GnuTLS: Policy bypass due to case-sensitive nameConstraints comparison",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-40225",
+      "gate_id": "container-analysis",
+      "message": "systemd: udev in systemd: Privilege escalation via malicious hardware devices and unsanitized kernel output",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-40226",
+      "gate_id": "container-analysis",
+      "message": "systemd: systemd nspawn: Escape-to-host action via crafted config file",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-40355",
+      "gate_id": "container-analysis",
+      "message": "krb5: MIT Kerberos 5: Denial of Service via NULL pointer dereference in NegoEx mechanism",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-40356",
+      "gate_id": "container-analysis",
+      "message": "krb5: MIT Kerberos 5 (krb5): Denial of Service via integer underflow and out-of-bounds read",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-4046",
+      "gate_id": "container-analysis",
+      "message": "glibc: glibc: Denial of Service via iconv() function with specific character sets",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-4105",
+      "gate_id": "container-analysis",
+      "message": "systemd: systemd: Privilege escalation via improper access control in RegisterMachine D-Bus method",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-41989",
+      "gate_id": "container-analysis",
+      "message": "Libgcrypt: Libgcrypt: Denial of Service and buffer overflow via crafted ECDH ciphertext",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-41991",
+      "gate_id": "container-analysis",
+      "message": "gzip: gzip: Arbitrary file overwrite via insecure temporary file handling in gzexe utility",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-41992",
+      "gate_id": "container-analysis",
+      "message": "gzip: gzip: Information disclosure via global buffer overflow in LZH decompression",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-42009",
+      "gate_id": "container-analysis",
+      "message": "gnutls: gnutls: Denial of Service via DTLS packet reordering vulnerability",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-42010",
+      "gate_id": "container-analysis",
+      "message": "gnutls: gnutls: Authentication Bypass via NUL Character in Username",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "critical"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-42011",
+      "gate_id": "container-analysis",
+      "message": "gnutls: gnutls: Security bypass due to incorrect name constraint handling",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-42012",
+      "gate_id": "container-analysis",
+      "message": "gnutls: gnutls: Certificate validation bypass due to improper handling of URI and SRV SANs",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-42013",
+      "gate_id": "container-analysis",
+      "message": "gnutls: gnutls: Certificate validation bypass due to oversized Subject Alternative Name",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-42014",
+      "gate_id": "container-analysis",
+      "message": "gnutls: gnutls: Use-after-free in gnutls_pkcs11_token_set_pin",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-42015",
+      "gate_id": "container-analysis",
+      "message": "gnutls: gnutls: Memory corruption due to off-by-one error in PKCS#12 bag handling",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-42250",
+      "gate_id": "container-analysis",
+      "message": "bzip2: bzip2: Denial of Service in bzip2recover via a specially crafted file",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-42496",
+      "gate_id": "container-analysis",
+      "message": "perl-archive-tar: perl-archive-tar: Path traversal via crafted symlinks allows arbitrary file access",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "critical"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-42497",
+      "gate_id": "container-analysis",
+      "message": "perl-Archive-Tar: perl-Archive-Tar: Arbitrary file modification via crafted hardlinks during archive extraction",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-4437",
+      "gate_id": "container-analysis",
+      "message": "glibc: glibc: Incorrect DNS response parsing via crafted DNS server response",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-45186",
+      "gate_id": "container-analysis",
+      "message": "libexpat: denial of service via crafted XML input",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-45445",
+      "gate_id": "container-analysis",
+      "message": "openssl: AES-OCB IV Ignored on EVP_Cipher() Path",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-45447",
+      "gate_id": "container-analysis",
+      "message": "openssl: Heap Use-After-Free in OpenSSL PKCS7_verify()",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-4878",
+      "gate_id": "container-analysis",
+      "message": "libcap: libcap: Privilege escalation via TOCTOU race condition in cap_set_file()",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-48959",
+      "gate_id": "container-analysis",
+      "message": "perl-IO-Compress: perl-IO-Compress: CPU exhaustion via per-byte read loop in fastForward",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-48962",
+      "gate_id": "container-analysis",
+      "message": "perl-IO-Compress: perl-IO-Compress: Arbitrary code execution via attacker-controlled output glob",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-50219",
+      "gate_id": "container-analysis",
+      "message": "expat: libexpat: Use-after-free vulnerability due to improper handler call depth tracking",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-50812",
+      "gate_id": "container-analysis",
+      "message": "sqlite: SQLite: Denial of Service via malformed changeset in Session Extension",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-50813",
+      "gate_id": "container-analysis",
+      "message": "sqlite: SQLite: Information disclosure via Session Extension changeset merge path",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-5260",
+      "gate_id": "container-analysis",
+      "message": "gnutls: gnutls: Information disclosure via heap overread in RSA key exchange",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-53613",
+      "gate_id": "container-analysis",
+      "message": "util-linux: TOCTOU in the mount program via ancestor directory swap on target path",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-53615",
+      "gate_id": "container-analysis",
+      "message": "util-linux: util-linux: Partition metadata compromise via integer overflow in DOS partition parser",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-5435",
+      "gate_id": "container-analysis",
+      "message": "glibc: glibc: Out-of-bounds write via TSIG record processing",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-54369",
+      "gate_id": "container-analysis",
+      "message": "acl: Symlink traversal privilege escalation via libacl functions",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-54370",
+      "gate_id": "container-analysis",
+      "message": "acl: TOCTOU Symlink Traversal via getfacl/setfacl",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-54371",
+      "gate_id": "container-analysis",
+      "message": "attr: attr: Symlink Traversal Privilege Escalation via getfattr and setfattr",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-54411",
+      "gate_id": "container-analysis",
+      "message": "linux-pam: Plaintext password recovery via timing discrepancy in pam_userdb module",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-5450",
+      "gate_id": "container-analysis",
+      "message": "glibc: glibc: Heap Buffer Overflow in `scanf` with `%mc` format specifier and large width",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-54872",
+      "gate_id": "container-analysis",
+      "message": "openssl: OpenSSL: Private key recovery via timing side-channel in generic elliptic curve operations",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-56131",
+      "gate_id": "container-analysis",
+      "message": "libexpat: libexpat: Use-after-free vulnerability due to insufficient handler call depth tracking",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-56132",
+      "gate_id": "container-analysis",
+      "message": "expat: libexpat: Arbitrary Code Execution via Heap-based Buffer Overflow",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-56403",
+      "gate_id": "container-analysis",
+      "message": "libexpat: libexpat: Arbitrary code execution due to integer overflow in storeAtts",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-56404",
+      "gate_id": "container-analysis",
+      "message": "libexpat: libexpat: Arbitrary Code Execution via integer overflow in addBinding",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-56405",
+      "gate_id": "container-analysis",
+      "message": "libexpat: libexpat: Information disclosure and arbitrary code execution via integer overflow",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-56406",
+      "gate_id": "container-analysis",
+      "message": "libexpat: libexpat: Arbitrary code execution via integer overflow in XML_ParseBuffer",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-56407",
+      "gate_id": "container-analysis",
+      "message": "libexpat: libexpat: Arbitrary code execution due to integer overflow",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-56408",
+      "gate_id": "container-analysis",
+      "message": "libexpat: libexpat: Information disclosure and arbitrary code execution via integer overflow",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-56409",
+      "gate_id": "container-analysis",
+      "message": "libexpat: libexpat: Integer overflow in xmlwf may lead to information disclosure or arbitrary code execution",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-56410",
+      "gate_id": "container-analysis",
+      "message": "libexpat: libexpat: Integer overflow in xmlwf can lead to information disclosure and arbitrary code execution.",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-56411",
+      "gate_id": "container-analysis",
+      "message": "expat: libexpat: Integer Overflow Vulnerability Leading to Information Disclosure or Code Execution",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-56412",
+      "gate_id": "container-analysis",
+      "message": "libexpat: libexpat: Use-after-free vulnerability due to improper handling of XML CDATA sections",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-5704",
+      "gate_id": "container-analysis",
+      "message": "tar: tar: Hidden file injection via crafted archives",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-57432",
+      "gate_id": "container-analysis",
+      "message": "perl: Perl: Information disclosure via integer overflow in pack/unpack operations",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-57433",
+      "gate_id": "container-analysis",
+      "message": "Storable: Storable: Denial of Service via signed integer overflow in deserialization",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-5928",
+      "gate_id": "container-analysis",
+      "message": "glibc: glibc: Information disclosure or denial of service via ungetwc function with specific wide character encodings",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-5958",
+      "gate_id": "container-analysis",
+      "message": "sed: GNU sed TOCTOU race condition",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-59890",
+      "gate_id": "container-analysis",
+      "message": "setuptools: setuptools: MANIFEST.in exclusion bypass in sdist via Unicode normalization collision (NFC/NFD)",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-6238",
+      "gate_id": "container-analysis",
+      "message": "glibc: glibc: Application crash or uninitialized memory read via crafted DNS response",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-63072",
+      "gate_id": "container-analysis",
+      "message": "openssl: heap buffer overflow in CMS key unwrapping",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-63076",
+      "gate_id": "container-analysis",
+      "message": "openssl: invalid pointer dereference in CMP server via crafted protectionAlg",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-6357",
+      "gate_id": "container-analysis",
+      "message": "pip: pip: Arbitrary code execution or information disclosure via malicious wheel package installation",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-6368",
+      "gate_id": "container-analysis",
+      "message": "glibc: glibc: Process abort due to invalid memory in wordexp",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-66046",
+      "gate_id": "container-analysis",
+      "message": "expat: Expat: Denial of Service via quadratic complexity in attribute processing",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-6791",
+      "gate_id": "container-analysis",
+      "message": "glibc: Glibc: Denial of Service via stack exhaustion during tilde expansion",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-7010",
+      "gate_id": "container-analysis",
+      "message": "HTTP::Tiny versions before 0.093 for Perl do not validate CRLF in HTTP ...",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-7017",
+      "gate_id": "container-analysis",
+      "message": "HTTP::Tiny versions before 0.095 for Perl forward credential headers t ...",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-72522",
+      "gate_id": "container-analysis",
+      "message": "expat: libexpat: Denial of Service due to incorrect Unicode surrogate handling",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-75805",
+      "gate_id": "container-analysis",
+      "message": "openssl: openssl: Denial of Service via crafted CMP certificate revocation response",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-75806",
+      "gate_id": "container-analysis",
+      "message": "openssl: OpenSSL: Denial of Service via undersized DTLS record",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-76642",
+      "gate_id": "container-analysis",
+      "message": "util-linux: util-linux: failed external mount helper still runs privileged X-mount post-hooks",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-76957",
+      "gate_id": "container-analysis",
+      "message": "libexpat: libexpat: Memory corruption vulnerability allows arbitrary code execution or denial of service",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-77117",
+      "gate_id": "container-analysis",
+      "message": "glibc: Non-progress DoS in SHIFT_JISX0213 -&gt",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-77214",
+      "gate_id": "container-analysis",
+      "message": "expat: expat: Information disclosure via heap buffer over-read in XML_ParseBuffer",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-77696",
+      "gate_id": "container-analysis",
+      "message": "openssl: OpenSSL: Private key recovery via SM2 timing side-channel",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-78408",
+      "gate_id": "container-analysis",
+      "message": "util-linux: util-linux: nsenter --join-cgroup leaks root cgroup migration authority",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-78410",
+      "gate_id": "container-analysis",
+      "message": "util-linux: util-linux: restricted bind mounts do not pin the source, allowing X-mount.owner/group/mode redirection",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-80489",
+      "gate_id": "container-analysis",
+      "message": "glibc: Non-progress DoS in EUC_JISX0213 -> UCS-4 conversion state",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-8376",
+      "gate_id": "container-analysis",
+      "message": "perl: Perl: Heap buffer overflow when compiling regular expressions on 32-bit builds",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "critical"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-84243",
+      "gate_id": "container-analysis",
+      "message": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-84782",
+      "gate_id": "container-analysis",
+      "message": "openssl: compat-openssl: openssl: Information disclosure via DTLS handshake retransmission",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-85091",
+      "gate_id": "container-analysis",
+      "message": "zlib versions 1.3.1.2 through 1.3.2 contain a heap buffer overflow vul ...",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-85231",
+      "gate_id": "container-analysis",
+      "message": "libtirpc: libtirpc: Denial of service via unbounded memory allocation during RPCSEC_GSS decoding",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-85977",
+      "gate_id": "container-analysis",
+      "message": "libtirpc: libtirpc: Denial of Service via unbounded memory allocation during portmapper response decoding",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-86145",
+      "gate_id": "container-analysis",
+      "message": "pcre2: PCRE2: Out-of-bounds write allows arbitrary code execution via crafted regular expressions",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-8643",
+      "gate_id": "container-analysis",
+      "message": "python-pip: Path traversal via malicious entry point name in pip wheel installation allows arbitrary file overwrite",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-8674",
+      "gate_id": "container-analysis",
+      "message": "glibc: glibc DNS stub resolver: Denial of Service via long search domain in configuration",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-86805",
+      "gate_id": "container-analysis",
+      "message": "glibc: glibc: Privilege escalation and arbitrary code execution via TOCTOU race condition in dynamic loader",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-89092",
+      "gate_id": "container-analysis",
+      "message": "glibc: nscd stack overflow leads to degraded DNS resolution",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-89156",
+      "gate_id": "container-analysis",
+      "message": "PCRE2: PCRE2: Out-of-bounds read via invalid UTF data during JIT fallback",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-89157",
+      "gate_id": "container-analysis",
+      "message": "pcre2: PCRE2: Out-of-bounds write via large pattern input",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-89158",
+      "gate_id": "container-analysis",
+      "message": "PCRE2: PCRE2: Out-of-bounds write via integer overflow on 32-bit platforms",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-89160",
+      "gate_id": "container-analysis",
+      "message": "pcre2: PCRE2: Denial of Service via out-of-bounds read during invalid UTF matching",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-89161",
+      "gate_id": "container-analysis",
+      "message": "pcre2: PCRE2: Memory corruption vulnerability in pcre2_jit_match",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-93990",
+      "gate_id": "container-analysis",
+      "message": "expat: Expat: XML Injection via Malformed UTF-16 Input",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-9538",
+      "gate_id": "container-analysis",
+      "message": "perl-Archive-Tar: perl-Archive-Tar: Denial of Service via crafted tar header with large entry size",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-95619",
+      "gate_id": "container-analysis",
+      "message": "gcc: libstdc++ integer overflow in `new` operator",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "trivy:CVE-2026-95818",
+      "gate_id": "container-analysis",
+      "message": "glibc: glibc: Local attacker can cause denial of service and information disclosure via stack-based buffer overflow.",
+      "requirement_ids": [
+        "SSDF-PW.6",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    }
+  ],
+  "run": {
+    "commit_id": "24232905172e36e7200b0654ca05723e47687ec5",
+    "fixture_id": "F04",
+    "pipeline": "proposed",
+    "run_id": "local-f04",
+    "stage": "container"
+  },
+  "schema_version": "decision/v1"
+}

@@ -1,0 +1,50 @@
+{
+  "schema_version": "evidence-document/v1",
+  "run": {
+    "run_id": "local-f02",
+    "fixture_id": "F02",
+    "commit_id": "24232905172e36e7200b0654ca05723e47687ec5",
+    "pipeline": "proposed",
+    "stage": "source"
+  },
+  "gate": {
+    "gate_id": "source-analysis",
+    "required": true,
+    "completed": true,
+    "tool_exit_code": 1,
+    "tool_version": "1.182.0"
+  },
+  "findings": [
+    {
+      "schema_version": "evidence/v1",
+      "finding_id": "semgrep:fixtures.controlled-app.F02-source.controlled-no-eval",
+      "fingerprint": "sha256:c6d3d9defa7974c4f24e1a6bb9014811fa976b5b843c93c0ed9702d05e5cb0fe",
+      "tool": "semgrep",
+      "tool_version": "1.182.0",
+      "category": "source",
+      "severity": "high",
+      "confidence": "high",
+      "message": "Controlled F02 source vulnerability: dynamic evaluation is prohibited.",
+      "requirement_ids": [
+        "SSDF-PW.7",
+        "ASVS-V5"
+      ],
+      "asset": {
+        "path": "fixtures/controlled-app/F02-source/src/unsafe.js",
+        "line_start": 3,
+        "line_end": 3
+      },
+      "status": "confirmed",
+      "normalization_status": "complete",
+      "observed_at": "2026-10-28T12:50:24.768957Z",
+      "raw_artifact": "artifacts/f02/semgrep.json"
+    }
+  ],
+  "normalization": {
+    "status": "complete",
+    "adapter_version": "0.1.0",
+    "raw_artifacts": [
+      "artifacts/f02/semgrep.json"
+    ]
+  }
+}

@@ -1,0 +1,96 @@
+name: Proposed security gate
+
+on:
+  workflow_dispatch:
+    inputs:
+      fixture_id:
+        description: Fixture identifier, for example F02
+        required: true
+        type: string
+      evidence_path:
+        description: Repository-relative normalized evidence JSON path
+        required: true
+        type: string
+      stage:
+        description: Pipeline stage represented by the evidence
+        required: true
+        type: choice
+        options:
+          - source
+          - dependencies
+          - container
+          - runtime
+      gate_id:
+        description: Required gate identifier
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  decision:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out fixture commit
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Conftest
+        shell: bash
+        run: |
+          set -euo pipefail
+          version="0.67.1"
+          curl --fail --location --silent --show-error \
+            "https://github.com/open-policy-agent/conftest/releases/download/v${version}/conftest_${version}_Linux_x86_64.tar.gz" \
+            | tar -xz -C /tmp
+          sudo install /tmp/conftest /usr/local/bin/conftest
+          conftest --version
+
+      - name: Validate evidence path
+        shell: bash
+        env:
+          EVIDENCE_PATH: ${{ inputs.evidence_path }}
+        run: |
+          set -euo pipefail
+          test -f "$EVIDENCE_PATH"
+          python -m json.tool "$EVIDENCE_PATH" >/dev/null
+
+      - name: Evaluate proposed decision
+        shell: bash
+        env:
+          COMMIT_ID: ${{ github.sha }}
+          EVIDENCE_PATH: ${{ inputs.evidence_path }}
+          FIXTURE_ID: ${{ inputs.fixture_id }}
+          STAGE: ${{ inputs.stage }}
+          GATE_ID: ${{ inputs.gate_id }}
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/workflow
+          set +e
+          python scripts/run-security-decision.py \
+            --evidence "$EVIDENCE_PATH" \
+            --output artifacts/workflow/decision.json \
+            --fixture-id "$FIXTURE_ID" \
+            --commit-id "$COMMIT_ID" \
+            --pipeline proposed \
+            --stage "$STAGE" \
+            --gate-id "$GATE_ID" \
+            --run-id "github-${GITHUB_RUN_ID}"
+          status=$?
+          set -e
+          cat artifacts/workflow/decision.json
+          exit "$status"
+
+      - name: Upload proposed decision artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: proposed-security-gate-${{ inputs.fixture_id }}-${{ github.run_id }}
+          path: |
+            ${{ inputs.evidence_path }}
+            artifacts/workflow/decision.json

@@ -1,0 +1,50 @@
+{
+  "schema_version": "evidence-document/v1",
+  "run": {
+    "run_id": "local-f07",
+    "fixture_id": "F07",
+    "commit_id": "24232905172e36e7200b0654ca05723e47687ec5",
+    "pipeline": "proposed",
+    "stage": "source"
+  },
+  "gate": {
+    "gate_id": "source-analysis",
+    "required": true,
+    "completed": true,
+    "tool_exit_code": 1,
+    "tool_version": "1.182.0"
+  },
+  "findings": [
+    {
+      "schema_version": "evidence/v1",
+      "finding_id": "semgrep:fixtures.controlled-app.F07-low.controlled-debug-log",
+      "fingerprint": "sha256:41744c792b49aefee33d6bc64ff3e55f484f650bd1c1cdf6a39d8afa72415cab",
+      "tool": "semgrep",
+      "tool_version": "1.182.0",
+      "category": "source",
+      "severity": "low",
+      "confidence": "high",
+      "message": "Controlled F07 low-severity diagnostic logging.",
+      "requirement_ids": [
+        "SSDF-PW.7",
+        "ASVS-V10"
+      ],
+      "asset": {
+        "path": "fixtures/controlled-app/F07-low/src/app.js",
+        "line_start": 2,
+        "line_end": 2
+      },
+      "status": "confirmed",
+      "normalization_status": "complete",
+      "observed_at": "2026-11-02T14:31:28.470993Z",
+      "raw_artifact": "artifacts/f07/semgrep.json"
+    }
+  ],
+  "normalization": {
+    "status": "complete",
+    "adapter_version": "0.1.0",
+    "raw_artifacts": [
+      "artifacts/f07/semgrep.json"
+    ]
+  }
+}

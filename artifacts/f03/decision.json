@@ -1,0 +1,74 @@
+{
+  "completed_gates": [
+    "dependency-analysis"
+  ],
+  "decision": "BLOCK",
+  "deployment_allowed": false,
+  "missing_required_gates": [],
+  "policy_version": "0.1.0",
+  "reasons": [
+    {
+      "finding_id": "dependency-check:GHSA-29mw-wpgm-hmr9",
+      "gate_id": "dependency-analysis",
+      "message": "All versions of package lodash prior to 4.17.21 are vulnerable to Regular Expression Denial of Service (ReDoS) via the `toNumber`, `trim` and `trimEnd` functions. \n\nSteps to reproduce (provided by reporter Liyuan Chen):\n```js\nvar lo = require('lodash');\n\nfunction build_blank(n) {\n    var ret = \"1\"\n    for (var i = 0; i < n; i++) {\n        ret += \" \"\n    }\n    return ret + \"1\";\n}\nvar s = build_blank(50000) var time0 = Date.now();\nlo.trim(s) \nvar time_cost0 = Date.now() - time0;\nconsole.log(\"time_cost0: \" + time_cost0);\nvar time1 = Date.now();\nlo.toNumber(s) var time_cost1 = Date.now() - time1;\nconsole.log(\"time_cost1: \" + time_cost1);\nvar time2 = Date.now();\nlo.trimEnd(s);\nvar time_cost2 = Date.now() - time2;\nconsole.log(\"time_cost2: \" + time_cost2);\n```",
+      "requirement_ids": [
+        "SSDF-PS.3",
+        "ASVS-V1",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "dependency-check:GHSA-35jh-r3h4-6jhm",
+      "gate_id": "dependency-analysis",
+      "message": "`lodash` versions prior to 4.17.21 are vulnerable to Command Injection via the template function.",
+      "requirement_ids": [
+        "SSDF-PS.3",
+        "ASVS-V1",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "dependency-check:GHSA-f23m-r3pf-42rh",
+      "gate_id": "dependency-analysis",
+      "message": "### Impact\n\nLodash versions 4.17.23 and earlier are vulnerable to prototype pollution in the `_.unset` and `_.omit` functions. The fix for [CVE-2025-13465](https://github.com/lodash/lodash/security/advisories/GHSA-xxjr-mmjv-4gpg) only guards against string key members, so an attacker can bypass the check by passing array-wrapped path segments. This allows deletion of properties from built-in prototypes such as `Object.prototype`, `Number.prototype`, and `String.prototype`.\n\nThe issue permits deletion of prototype properties but does not allow overwriting their original behavior.\n\n### Patches\n\nThis issue is patched in 4.18.0.\n\n### Workarounds\n\nNone. Upgrade to the patched version.",
+      "requirement_ids": [
+        "SSDF-PS.3",
+        "ASVS-V1",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "dependency-check:GHSA-r5fr-rjxr-66jc",
+      "gate_id": "dependency-analysis",
+      "message": "### Impact\n\nThe fix for [CVE-2021-23337](https://github.com/advisories/GHSA-35jh-r3h4-6jhm) added validation for the `variable` option in `_.template` but did not apply the same validation to `options.imports` key names. Both paths flow into the same `Function()` constructor sink.\n\nWhen an application passes untrusted input as `options.imports` key names, an attacker can inject default-parameter expressions that execute arbitrary code at template compilation time.\n\nAdditionally, `_.template` uses `assignInWith` to merge imports, which enumerates inherited properties via `for..in`. If `Object.prototype` has been polluted by any other vector, the polluted keys are copied into the imports object and passed to `Function()`.\n\n### Patches\n\nUsers should upgrade to version 4.18.0.\n\nThe fix applies two changes:\n1. Validate `importsKeys` against the existing `reForbiddenIdentifierChars` regex (same check already used for the `variable` option)\n2. Replace `assignInWith` with `assignWith` when merging imports, so only own properties are enumerated\n\n### Workarounds\n\nDo not pass untrusted input as key names in `options.imports`. Only use developer-controlled, static key names.",
+      "requirement_ids": [
+        "SSDF-PS.3",
+        "ASVS-V1",
+        "ASVS-V14"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "dependency-check:GHSA-xxjr-mmjv-4gpg",
+      "gate_id": "dependency-analysis",
+      "message": "### Impact\n\nLodash versions 4.0.0 through 4.17.22 are vulnerable to prototype pollution in the `_.unset` and `_.omit` functions. An attacker can pass crafted paths which cause Lodash to delete methods from global prototypes. \n\nThe issue permits deletion of properties but does not allow overwriting their original behavior.  \n\n### Patches\n\nThis issue is patched on 4.17.23.",
+      "requirement_ids": [
+        "SSDF-PS.3",
+        "ASVS-V1",
+        "ASVS-V14"
+      ],
+      "severity": "medium"
+    }
+  ],
+  "run": {
+    "commit_id": "",
+    "fixture_id": "F03",
+    "pipeline": "proposed",
+    "run_id": "local-f03",
+    "stage": "dependencies"
+  },
+  "schema_version": "decision/v1"
+}

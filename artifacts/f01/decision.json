@@ -1,0 +1,29 @@
+{
+  "completed_gates": [
+    "secret-detection"
+  ],
+  "decision": "BLOCK",
+  "deployment_allowed": false,
+  "missing_required_gates": [],
+  "policy_version": "0.1.0",
+  "reasons": [
+    {
+      "finding_id": "gitleaks:stripe-access-token",
+      "gate_id": "secret-detection",
+      "message": "Found a Stripe Access Token, posing a risk to payment processing services and sensitive financial data.",
+      "requirement_ids": [
+        "SSDF-PW.5",
+        "ASVS-V6"
+      ],
+      "severity": "high"
+    }
+  ],
+  "run": {
+    "commit_id": "24232905172e36e7200b0654ca05723e47687ec5",
+    "fixture_id": "F01",
+    "pipeline": "proposed",
+    "run_id": "local-f01",
+    "stage": "source"
+  },
+  "schema_version": "decision/v1"
+}

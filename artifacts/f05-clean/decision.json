@@ -1,0 +1,30 @@
+{
+  "completed_gates": [
+    "runtime-analysis"
+  ],
+  "decision": "WARN",
+  "deployment_allowed": true,
+  "missing_required_gates": [],
+  "policy_version": "0.1.0",
+  "reasons": [
+    {
+      "finding_id": "zap:10049",
+      "gate_id": "runtime-analysis",
+      "message": "<p>The response contents are not storable by caching components such as proxy servers. If the response does not contain sensitive, personal or user-specific information, it may benefit from being stored and cached, to improve performance.</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "severity": "low"
+    }
+  ],
+  "run": {
+    "commit_id": "24232905172e36e7200b0654ca05723e47687ec5",
+    "fixture_id": "F05-clean",
+    "pipeline": "proposed",
+    "run_id": "local-f05-clean",
+    "stage": "runtime"
+  },
+  "schema_version": "decision/v1"
+}

@@ -1,0 +1,38 @@
+name: Security gate tests
+
+on:
+  push:
+    paths:
+      - "policies/security-gates/**"
+      - "scripts/**"
+      - "tests/security-gates/**"
+  pull_request:
+    paths:
+      - "policies/security-gates/**"
+      - "scripts/**"
+      - "tests/security-gates/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install Conftest
+        run: |
+          set -euo pipefail
+          version="0.67.1"
+          curl --fail --location --silent --show-error \
+            "https://github.com/open-policy-agent/conftest/releases/download/v${version}/conftest_${version}_Linux_x86_64.tar.gz" \
+            | tar -xz -C /tmp
+          sudo install /tmp/conftest /usr/local/bin/conftest
+      - name: Run Python tests
+        run: python -m unittest discover -s tests/security-gates -p 'test_*.py' -v
+      - name: Verify Rego policies
+        run: conftest verify --policy policies/security-gates --strict --no-color

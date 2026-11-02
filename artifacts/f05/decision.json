@@ -1,0 +1,140 @@
+{
+  "completed_gates": [
+    "runtime-analysis"
+  ],
+  "decision": "BLOCK",
+  "deployment_allowed": false,
+  "missing_required_gates": [],
+  "policy_version": "0.1.0",
+  "reasons": [
+    {
+      "finding_id": "zap:10020",
+      "gate_id": "runtime-analysis",
+      "message": "<p>The response does not protect against 'ClickJacking' attacks. It should include either Content-Security-Policy with 'frame-ancestors' directive or X-Frame-Options.</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "zap:10021",
+      "gate_id": "runtime-analysis",
+      "message": "<p>The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "zap:10036",
+      "gate_id": "runtime-analysis",
+      "message": "<p>The web/application server is leaking version information via the \"Server\" HTTP response header. Access to such information may facilitate attackers identifying other vulnerabilities your web/application server is subject to.</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "zap:10038",
+      "gate_id": "runtime-analysis",
+      "message": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "zap:10049",
+      "gate_id": "runtime-analysis",
+      "message": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "zap:10063",
+      "gate_id": "runtime-analysis",
+      "message": "<p>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "zap:40012",
+      "gate_id": "runtime-analysis",
+      "message": "<p>Cross-site Scripting (XSS) is an attack technique that involves echoing attacker-supplied code into a user's browser instance. A browser instance can be a standard web browser client, or a browser object embedded in a software product such as the browser within WinAmp, an RSS reader, or an email client. The code itself is usually written in HTML/JavaScript, but may also extend to VBScript, ActiveX, Java, Flash, or any other browser-supported technology.</p><p>When an attacker gets a user's browser to execute his/her code, the code will run within the security context (or zone) of the hosting web site. With this level of privilege, the code has the ability to read, modify and transmit any sensitive data accessible by the browser. A Cross-site Scripted user could have his/her account hijacked (cookie theft), their browser redirected to another location, or possibly shown fraudulent content delivered by the web site they are visiting. Cross-site Scripting attacks essentially compromise the trust relationship between a user and the web site. Applications utilizing browser object instances which load content from the file system may execute code under the local machine zone allowing for system compromise.</p><p></p><p>There are three types of Cross-site Scripting attacks: non-persistent, persistent and DOM-based.</p><p>Non-persistent attacks and DOM-based attacks require a user to either visit a specially crafted link laced with malicious code, or visit a malicious web page containing a web form, which when posted to the vulnerable site, will mount the attack. Using a malicious form will oftentimes take place when the vulnerable resource only accepts HTTP POST requests. In such a case, the form can be submitted automatically, without the victim's knowledge (e.g. by using JavaScript). Upon clicking on the malicious link or submitting the malicious form, the XSS payload will get echoed back and will get interpreted by the user's browser and execute. Another technique to send almost arbitrary requests (GET and POST) is by using an embedded client, such as Adobe Flash.</p><p>Persistent attacks occur when the malicious code is submitted to a web site where it's stored for a period of time. Examples of an attacker's favorite targets often include message board posts, web mail messages, and web chat software. The unsuspecting user is not required to interact with any additional site/link (e.g. an attacker site or a malicious link sent via email), just simply view the web page containing the code.</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "zap:40026",
+      "gate_id": "runtime-analysis",
+      "message": "<p>Cross-site Scripting (XSS) is an attack technique that involves echoing attacker-supplied code into a user's browser instance. A browser instance can be a standard web browser client, or a browser object embedded in a software product such as the browser within WinAmp, an RSS reader, or an email client. The code itself is usually written in HTML/JavaScript, but may also extend to VBScript, ActiveX, Java, Flash, or any other browser-supported technology.</p><p>When an attacker gets a user's browser to execute his/her code, the code will run within the security context (or zone) of the hosting web site. With this level of privilege, the code has the ability to read, modify and transmit any sensitive data accessible by the browser. A Cross-site Scripted user could have his/her account hijacked (cookie theft), their browser redirected to another location, or possibly shown fraudulent content delivered by the web site they are visiting. Cross-site Scripting attacks essentially compromise the trust relationship between a user and the web site. Applications utilizing browser object instances which load content from the file system may execute code under the local machine zone allowing for system compromise.</p><p></p><p>There are three types of Cross-site Scripting attacks: non-persistent, persistent and DOM-based.</p><p>Non-persistent attacks and DOM-based attacks require a user to either visit a specially crafted link laced with malicious code, or visit a malicious web page containing a web form, which when posted to the vulnerable site, will mount the attack. Using a malicious form will oftentimes take place when the vulnerable resource only accepts HTTP POST requests. In such a case, the form can be submitted automatically, without the victim's knowledge (e.g. by using JavaScript). Upon clicking on the malicious link or submitting the malicious form, the XSS payload will get echoed back and will get interpreted by the user's browser and execute. Another technique to send almost arbitrary requests (GET and POST) is by using an embedded client, such as Adobe Flash.</p><p>Persistent attacks occur when the malicious code is submitted to a web site where it's stored for a period of time. Examples of an attacker's favorite targets often include message board posts, web mail messages, and web chat software. The unsuspecting user is not required to interact with any additional site/link (e.g. an attacker site or a malicious link sent via email), just simply view the web page containing the code.</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "severity": "high"
+    },
+    {
+      "finding_id": "zap:90004",
+      "gate_id": "runtime-analysis",
+      "message": "<p>Cross-Origin-Embedder-Policy header is a response header that prevents a document from loading any cross-origin resources that don't explicitly grant the document permission (using CORP or CORS).</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "zap:90004",
+      "gate_id": "runtime-analysis",
+      "message": "<p>Cross-Origin-Opener-Policy header is a response header that allows a site to control if others included documents share the same browsing context. Sharing the same browsing context with untrusted documents might lead to data leak.</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "severity": "medium"
+    },
+    {
+      "finding_id": "zap:90004",
+      "gate_id": "runtime-analysis",
+      "message": "<p>Cross-Origin-Resource-Policy header is an opt-in header designed to counter side-channels attacks like Spectre. Resource should be specifically set as shareable amongst different origins.</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "severity": "medium"
+    }
+  ],
+  "run": {
+    "commit_id": "24232905172e36e7200b0654ca05723e47687ec5",
+    "fixture_id": "F05",
+    "pipeline": "proposed",
+    "run_id": "local-f05",
+    "stage": "runtime"
+  },
+  "schema_version": "decision/v1"
+}

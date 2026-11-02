@@ -1,24 +1,34 @@
-# PoC Scope
+# Project Scope
 
 ## Title
-Policy-as-Code Enforcement in DevSecOps Pipelines
+Policy-as-Code Security Gates for CI/CD Pipelines: Operationalising NIST SSDF
+and OWASP ASVS for Early Vulnerability Detection
 
-## PoC Objective
-This proof of concept aims to design, implement, and evaluate a Policy-as-Code enforcement approach for DevSecOps pipelines. The PoC will use OPA/Rego to enforce a limited set of security policies over Kubernetes manifests at two pipeline stages: CI validation and Kubernetes admission control.
+## Project Objective
+This project aims to design, implement, and evaluate a Policy-as-Code
+security-gate framework for CI/CD pipelines. The framework will translate
+selected NIST SSDF and OWASP ASVS requirements into machine-enforceable
+policies, aggregate evidence from open-source security tools, and produce
+PASS/WARN/BLOCK decisions for controlled vulnerable commits.
 
 ## Problem Statement
-DevSecOps pipelines often lack consistent, automated, and auditable enforcement of security policies across the software delivery lifecycle. In practice, insecure configurations may pass through CI/CD pipelines because security rules are applied manually, inconsistently, or too late. This creates governance gaps, weak traceability, and higher remediation cost.
+Modern CI/CD pipelines often run security scanners as independent tasks with
+tool-specific outputs and thresholds. They do not necessarily provide
+traceability from secure-development requirements to machine-enforceable
+decisions, nor evidence that a finding was detected early enough to prevent a
+vulnerable deployment. This project evaluates whether a central
+policy-as-code decision layer can close that gap while maintaining acceptable
+pipeline overhead.
 
 ## Scope
 The PoC includes:
-- Kubernetes manifests as the only governed artefact type
-- OPA/Rego as the policy language
-- Conftest for policy validation in CI
-- OPA Gatekeeper for policy enforcement at Kubernetes admission control
-- A GitHub repository containing policies, manifests, tests, and pipeline configuration
-- Five security policies that are machine-enforceable and relevant to Kubernetes deployment security
-- Controlled compliant and non-compliant scenarios
-- Baseline vs PoC comparison
+- GitHub Actions as the primary CI/CD platform
+- OPA/Rego as the central policy decision language
+- Open-source secret, SAST, SCA, container, and DAST tools
+- Selected NIST SSDF and OWASP ASVS requirements
+- Controlled commits with known vulnerability ground truth
+- Baseline versus proposed-pipeline comparison
+- Kubernetes admission control as supporting deployment-time evidence
 
 ## Out of Scope
 The PoC does not include:
@@ -33,22 +43,25 @@ The PoC does not include:
 
 ## Enforcement Points
 The PoC implements enforcement at two points:
-1. CI validation using Conftest and OPA/Rego
-2. Kubernetes admission control using OPA Gatekeeper
+1. Staged CI/CD security gates using GitHub Actions and scanner evidence
+2. Central PASS/WARN/BLOCK decisions using OPA/Rego
+3. Kubernetes admission control as a supporting defence-in-depth enforcement point
 
 ## Research Objective Alignment
 This PoC supports:
-- problem interpretation
-- design of a technical solution
-- implementation of the solution
-- experimental evaluation of the solution
-- critical analysis of results
+- problem interpretation and literature-based requirement selection
+- design of a traceable security-gate framework
+- implementation of the policy decision layer
+- controlled comparative experimental evaluation
+- critical analysis of detection, prevention, false positives, and overhead
 
 ## Expected Contribution
 The PoC is expected to contribute:
-- a small but reproducible reference implementation
-- a structured mapping from high-level policy requirements to machine-enforceable rules
-- evidence on the effectiveness of early and multi-stage policy enforcement in DevSecOps pipelines
+- a reproducible policy-as-code security-gate framework
+- a traceability mapping from NIST SSDF and OWASP ASVS to gate policies
+- a common evidence and decision model across heterogeneous scanners
+- controlled evidence on early detection, deployment prevention, false positives,
+  and CI/CD overhead
 
 ## Success Criteria
 The PoC is considered successful if:
@@ -60,9 +73,19 @@ The PoC is considered successful if:
 - baseline and PoC behavior can be compared
 - policy checks introduce acceptable overhead for the PoC context
 
-## Main Research Questions
-RQ1: Can Policy-as-Code enforcement detect insecure Kubernetes configurations automatically?
+## Main Research Question
+To what extent can an SSDLC-derived policy-as-code security gate framework
+improve early vulnerability detection and prevent vulnerable deployments in
+CI/CD pipelines compared with a traditional late-stage security approach,
+while maintaining acceptable pipeline overhead?
 
-RQ2: Does multi-stage enforcement (CI + admission control) improve governance coverage?
+## Supporting Research Questions
+RQ1: How can selected NIST SSDF and OWASP ASVS requirements be translated into
+machine-enforceable security-gate policies within GitHub Actions?
 
-RQ3: Does admission control mitigate CI bypass risks?
+RQ2: How does the proposed framework affect vulnerability detection rate,
+stage of first detection, time-to-security-feedback, and vulnerable
+deployments prevented?
+
+RQ3: What CI/CD overhead and false-positive cost are introduced by the
+proposed security gates?

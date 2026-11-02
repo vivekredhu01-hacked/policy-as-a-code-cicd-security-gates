@@ -1,0 +1,25 @@
+{
+  "schema_version": "evidence-document/v1",
+  "run": {
+    "run_id": "local-f07-clean",
+    "fixture_id": "F07-clean",
+    "commit_id": "24232905172e36e7200b0654ca05723e47687ec5",
+    "pipeline": "proposed",
+    "stage": "source"
+  },
+  "gate": {
+    "gate_id": "source-analysis",
+    "required": true,
+    "completed": true,
+    "tool_exit_code": 0,
+    "tool_version": "1.182.0"
+  },
+  "findings": [],
+  "normalization": {
+    "status": "complete",
+    "adapter_version": "0.1.0",
+    "raw_artifacts": [
+      "artifacts/f07-clean/semgrep.json"
+    ]
+  }
+}

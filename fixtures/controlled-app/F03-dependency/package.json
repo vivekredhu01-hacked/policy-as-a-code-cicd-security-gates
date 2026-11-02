@@ -1,0 +1,9 @@
+{
+  "name": "policy-gate-controlled-app-f03",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Controlled dependency-vulnerability fixture",
+  "dependencies": {
+    "lodash": "4.17.19"
+  }
+}

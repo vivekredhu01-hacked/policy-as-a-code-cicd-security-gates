@@ -1,0 +1,1014 @@
+{
+  "schema_version": "evidence-document/v1",
+  "run": {
+    "run_id": "local-f05",
+    "fixture_id": "F05",
+    "commit_id": "24232905172e36e7200b0654ca05723e47687ec5",
+    "pipeline": "proposed",
+    "stage": "runtime"
+  },
+  "gate": {
+    "gate_id": "runtime-analysis",
+    "required": true,
+    "completed": true,
+    "tool_exit_code": 0,
+    "tool_version": "2.16.0"
+  },
+  "findings": [
+    {
+      "schema_version": "evidence/v1",
+      "finding_id": "zap:40026",
+      "fingerprint": "sha256:70d7de82b168b681c76c4d8ac6c329fd7385b230e47c76010e6468d36ec9d8bc",
+      "tool": "zap",
+      "tool_version": "2.16.0",
+      "category": "runtime",
+      "severity": "high",
+      "confidence": "high",
+      "message": "<p>Cross-site Scripting (XSS) is an attack technique that involves echoing attacker-supplied code into a user's browser instance. A browser instance can be a standard web browser client, or a browser object embedded in a software product such as the browser within WinAmp, an RSS reader, or an email client. The code itself is usually written in HTML/JavaScript, but may also extend to VBScript, ActiveX, Java, Flash, or any other browser-supported technology.</p><p>When an attacker gets a user's browser to execute his/her code, the code will run within the security context (or zone) of the hosting web site. With this level of privilege, the code has the ability to read, modify and transmit any sensitive data accessible by the browser. A Cross-site Scripted user could have his/her account hijacked (cookie theft), their browser redirected to another location, or possibly shown fraudulent content delivered by the web site they are visiting. Cross-site Scripting attacks essentially compromise the trust relationship between a user and the web site. Applications utilizing browser object instances which load content from the file system may execute code under the local machine zone allowing for system compromise.</p><p></p><p>There are three types of Cross-site Scripting attacks: non-persistent, persistent and DOM-based.</p><p>Non-persistent attacks and DOM-based attacks require a user to either visit a specially crafted link laced with malicious code, or visit a malicious web page containing a web form, which when posted to the vulnerable site, will mount the attack. Using a malicious form will oftentimes take place when the vulnerable resource only accepts HTTP POST requests. In such a case, the form can be submitted automatically, without the victim's knowledge (e.g. by using JavaScript). Upon clicking on the malicious link or submitting the malicious form, the XSS payload will get echoed back and will get interpreted by the user's browser and execute. Another technique to send almost arbitrary requests (GET and POST) is by using an embedded client, such as Adobe Flash.</p><p>Persistent attacks occur when the malicious code is submitted to a web site where it's stored for a period of time. Examples of an attacker's favorite targets often include message board posts, web mail messages, and web chat software. The unsuspecting user is not required to interact with any additional site/link (e.g. an attacker site or a malicious link sent via email), just simply view the web page containing the code.</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "asset": {
+        "url": "http://host.docker.internal:8000/?q=%3Cscript%3Ealert(5397)%3C/script%3E",
+        "method": "GET",
+        "parameter": "q"
+      },
+      "cwe": "79",
+      "status": "confirmed",
+      "normalization_status": "complete",
+      "observed_at": "2026-11-01T22:45:23.691748Z",
+      "raw_artifact": "artifacts/f05/zap.json"
+    },
+    {
+      "schema_version": "evidence/v1",
+      "finding_id": "zap:40012",
+      "fingerprint": "sha256:14970367d6267367d058c5d0a7936d3e514d9b385b104b221ae04b25aaacdc21",
+      "tool": "zap",
+      "tool_version": "2.16.0",
+      "category": "runtime",
+      "severity": "high",
+      "confidence": "high",
+      "message": "<p>Cross-site Scripting (XSS) is an attack technique that involves echoing attacker-supplied code into a user's browser instance. A browser instance can be a standard web browser client, or a browser object embedded in a software product such as the browser within WinAmp, an RSS reader, or an email client. The code itself is usually written in HTML/JavaScript, but may also extend to VBScript, ActiveX, Java, Flash, or any other browser-supported technology.</p><p>When an attacker gets a user's browser to execute his/her code, the code will run within the security context (or zone) of the hosting web site. With this level of privilege, the code has the ability to read, modify and transmit any sensitive data accessible by the browser. A Cross-site Scripted user could have his/her account hijacked (cookie theft), their browser redirected to another location, or possibly shown fraudulent content delivered by the web site they are visiting. Cross-site Scripting attacks essentially compromise the trust relationship between a user and the web site. Applications utilizing browser object instances which load content from the file system may execute code under the local machine zone allowing for system compromise.</p><p></p><p>There are three types of Cross-site Scripting attacks: non-persistent, persistent and DOM-based.</p><p>Non-persistent attacks and DOM-based attacks require a user to either visit a specially crafted link laced with malicious code, or visit a malicious web page containing a web form, which when posted to the vulnerable site, will mount the attack. Using a malicious form will oftentimes take place when the vulnerable resource only accepts HTTP POST requests. In such a case, the form can be submitted automatically, without the victim's knowledge (e.g. by using JavaScript). Upon clicking on the malicious link or submitting the malicious form, the XSS payload will get echoed back and will get interpreted by the user's browser and execute. Another technique to send almost arbitrary requests (GET and POST) is by using an embedded client, such as Adobe Flash.</p><p>Persistent attacks occur when the malicious code is submitted to a web site where it's stored for a period of time. Examples of an attacker's favorite targets often include message board posts, web mail messages, and web chat software. The unsuspecting user is not required to interact with any additional site/link (e.g. an attacker site or a malicious link sent via email), just simply view the web page containing the code.</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "asset": {
+        "url": "http://host.docker.internal:8000/?q=%3C%2Fp%3E%3CscrIpt%3Ealert%281%29%3B%3C%2FscRipt%3E%3Cp%3E",
+        "method": "GET",
+        "parameter": "q"
+      },
+      "cwe": "79",
+      "status": "confirmed",
+      "normalization_status": "complete",
+      "observed_at": "2026-11-01T22:45:23.692146Z",
+      "raw_artifact": "artifacts/f05/zap.json"
+    },
+    {
+      "schema_version": "evidence/v1",
+      "finding_id": "zap:10038",
+      "fingerprint": "sha256:981f4daab9f1193659b27ae025f4183c6e85b07f1bd5630065cd51b843d61125",
+      "tool": "zap",
+      "tool_version": "2.16.0",
+      "category": "runtime",
+      "severity": "high",
+      "confidence": "high",
+      "message": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "asset": {
+        "url": "http://host.docker.internal:8000/",
+        "method": "GET",
+        "parameter": ""
+      },
+      "cwe": "693",
+      "status": "confirmed",
+      "normalization_status": "complete",
+      "observed_at": "2026-11-01T22:45:23.692157Z",
+      "raw_artifact": "artifacts/f05/zap.json"
+    },
+    {
+      "schema_version": "evidence/v1",
+      "finding_id": "zap:10038",
+      "fingerprint": "sha256:05fb9cededf69adea7fa3610f02502cd3411ae171ee4da605c111848fc4d4d9f",
+      "tool": "zap",
+      "tool_version": "2.16.0",
+      "category": "runtime",
+      "severity": "high",
+      "confidence": "high",
+      "message": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "asset": {
+        "url": "http://host.docker.internal:8000/?q=test",
+        "method": "GET",
+        "parameter": ""
+      },
+      "cwe": "693",
+      "status": "confirmed",
+      "normalization_status": "complete",
+      "observed_at": "2026-11-01T22:45:23.692166Z",
+      "raw_artifact": "artifacts/f05/zap.json"
+    },
+    {
+      "schema_version": "evidence/v1",
+      "finding_id": "zap:10038",
+      "fingerprint": "sha256:62182971af2bffca210c4286020a514f7581bd8675b881f6a4f853cd511c3ea8",
+      "tool": "zap",
+      "tool_version": "2.16.0",
+      "category": "runtime",
+      "severity": "high",
+      "confidence": "high",
+      "message": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "asset": {
+        "url": "http://host.docker.internal:8000/robots.txt",
+        "method": "GET",
+        "parameter": ""
+      },
+      "cwe": "693",
+      "status": "confirmed",
+      "normalization_status": "complete",
+      "observed_at": "2026-11-01T22:45:23.692171Z",
+      "raw_artifact": "artifacts/f05/zap.json"
+    },
+    {
+      "schema_version": "evidence/v1",
+      "finding_id": "zap:10038",
+      "fingerprint": "sha256:b2f871691a02111517875a0355a34adbe4a8d5dc4f1b805d652a500635f1f6e2",
+      "tool": "zap",
+      "tool_version": "2.16.0",
+      "category": "runtime",
+      "severity": "high",
+      "confidence": "high",
+      "message": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "asset": {
+        "url": "http://host.docker.internal:8000/sitemap.xml",
+        "method": "GET",
+        "parameter": ""
+      },
+      "cwe": "693",
+      "status": "confirmed",
+      "normalization_status": "complete",
+      "observed_at": "2026-11-01T22:45:23.692175Z",
+      "raw_artifact": "artifacts/f05/zap.json"
+    },
+    {
+      "schema_version": "evidence/v1",
+      "finding_id": "zap:10020",
+      "fingerprint": "sha256:f8111ed6db3d5dde5692e0e393886c06b380b20fd8c7b6cb3529a4e0c07a7036",
+      "tool": "zap",
+      "tool_version": "2.16.0",
+      "category": "runtime",
+      "severity": "medium",
+      "confidence": "high",
+      "message": "<p>The response does not protect against 'ClickJacking' attacks. It should include either Content-Security-Policy with 'frame-ancestors' directive or X-Frame-Options.</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "asset": {
+        "url": "http://host.docker.internal:8000/",
+        "method": "GET",
+        "parameter": "x-frame-options"
+      },
+      "cwe": "1021",
+      "status": "confirmed",
+      "normalization_status": "complete",
+      "observed_at": "2026-11-01T22:45:23.692180Z",
+      "raw_artifact": "artifacts/f05/zap.json"
+    },
+    {
+      "schema_version": "evidence/v1",
+      "finding_id": "zap:10020",
+      "fingerprint": "sha256:931097c7bb788b6843394437d0440c29a64f48fe2a35248ab4b8f0e2189cfae3",
+      "tool": "zap",
+      "tool_version": "2.16.0",
+      "category": "runtime",
+      "severity": "medium",
+      "confidence": "high",
+      "message": "<p>The response does not protect against 'ClickJacking' attacks. It should include either Content-Security-Policy with 'frame-ancestors' directive or X-Frame-Options.</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "asset": {
+        "url": "http://host.docker.internal:8000/?q=test",
+        "method": "GET",
+        "parameter": "x-frame-options"
+      },
+      "cwe": "1021",
+      "status": "confirmed",
+      "normalization_status": "complete",
+      "observed_at": "2026-11-01T22:45:23.692184Z",
+      "raw_artifact": "artifacts/f05/zap.json"
+    },
+    {
+      "schema_version": "evidence/v1",
+      "finding_id": "zap:10020",
+      "fingerprint": "sha256:ad78f5cb71a1709008161602d0cac8fb9557670c8b1d6afa0a9d95b4186c795e",
+      "tool": "zap",
+      "tool_version": "2.16.0",
+      "category": "runtime",
+      "severity": "medium",
+      "confidence": "high",
+      "message": "<p>The response does not protect against 'ClickJacking' attacks. It should include either Content-Security-Policy with 'frame-ancestors' directive or X-Frame-Options.</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "asset": {
+        "url": "http://host.docker.internal:8000/robots.txt",
+        "method": "GET",
+        "parameter": "x-frame-options"
+      },
+      "cwe": "1021",
+      "status": "confirmed",
+      "normalization_status": "complete",
+      "observed_at": "2026-11-01T22:45:23.692188Z",
+      "raw_artifact": "artifacts/f05/zap.json"
+    },
+    {
+      "schema_version": "evidence/v1",
+      "finding_id": "zap:10020",
+      "fingerprint": "sha256:c5d5cdda54538f7315bde96f481646204953d660c1f004aa5fb6c3519c9e66fb",
+      "tool": "zap",
+      "tool_version": "2.16.0",
+      "category": "runtime",
+      "severity": "medium",
+      "confidence": "high",
+      "message": "<p>The response does not protect against 'ClickJacking' attacks. It should include either Content-Security-Policy with 'frame-ancestors' directive or X-Frame-Options.</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "asset": {
+        "url": "http://host.docker.internal:8000/sitemap.xml",
+        "method": "GET",
+        "parameter": "x-frame-options"
+      },
+      "cwe": "1021",
+      "status": "confirmed",
+      "normalization_status": "complete",
+      "observed_at": "2026-11-01T22:45:23.692192Z",
+      "raw_artifact": "artifacts/f05/zap.json"
+    },
+    {
+      "schema_version": "evidence/v1",
+      "finding_id": "zap:90004",
+      "fingerprint": "sha256:929b211211ad26d7582f15640b3cc40b459452b53a8910df00c5ef69489ac0c5",
+      "tool": "zap",
+      "tool_version": "2.16.0",
+      "category": "runtime",
+      "severity": "medium",
+      "confidence": "high",
+      "message": "<p>Cross-Origin-Embedder-Policy header is a response header that prevents a document from loading any cross-origin resources that don't explicitly grant the document permission (using CORP or CORS).</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "asset": {
+        "url": "http://host.docker.internal:8000/",
+        "method": "GET",
+        "parameter": "Cross-Origin-Embedder-Policy"
+      },
+      "cwe": "693",
+      "status": "confirmed",
+      "normalization_status": "complete",
+      "observed_at": "2026-11-01T22:45:23.692197Z",
+      "raw_artifact": "artifacts/f05/zap.json"
+    },
+    {
+      "schema_version": "evidence/v1",
+      "finding_id": "zap:90004",
+      "fingerprint": "sha256:2e5c9d9341520f38261a18ec83459961c393bf4d4c03f9fc251723d4c52a8d61",
+      "tool": "zap",
+      "tool_version": "2.16.0",
+      "category": "runtime",
+      "severity": "medium",
+      "confidence": "high",
+      "message": "<p>Cross-Origin-Embedder-Policy header is a response header that prevents a document from loading any cross-origin resources that don't explicitly grant the document permission (using CORP or CORS).</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "asset": {
+        "url": "http://host.docker.internal:8000/?q=test",
+        "method": "GET",
+        "parameter": "Cross-Origin-Embedder-Policy"
+      },
+      "cwe": "693",
+      "status": "confirmed",
+      "normalization_status": "complete",
+      "observed_at": "2026-11-01T22:45:23.692201Z",
+      "raw_artifact": "artifacts/f05/zap.json"
+    },
+    {
+      "schema_version": "evidence/v1",
+      "finding_id": "zap:90004",
+      "fingerprint": "sha256:7239597e9369ca8a01cce356609d3db08db13058409e7acd7a6a93facc735a6a",
+      "tool": "zap",
+      "tool_version": "2.16.0",
+      "category": "runtime",
+      "severity": "medium",
+      "confidence": "high",
+      "message": "<p>Cross-Origin-Embedder-Policy header is a response header that prevents a document from loading any cross-origin resources that don't explicitly grant the document permission (using CORP or CORS).</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "asset": {
+        "url": "http://host.docker.internal:8000/robots.txt",
+        "method": "GET",
+        "parameter": "Cross-Origin-Embedder-Policy"
+      },
+      "cwe": "693",
+      "status": "confirmed",
+      "normalization_status": "complete",
+      "observed_at": "2026-11-01T22:45:23.692205Z",
+      "raw_artifact": "artifacts/f05/zap.json"
+    },
+    {
+      "schema_version": "evidence/v1",
+      "finding_id": "zap:90004",
+      "fingerprint": "sha256:b2da99271ecdcfbfa407aac1e0e4afbe4206ee1c603ab50b46774122de7dc4bb",
+      "tool": "zap",
+      "tool_version": "2.16.0",
+      "category": "runtime",
+      "severity": "medium",
+      "confidence": "high",
+      "message": "<p>Cross-Origin-Embedder-Policy header is a response header that prevents a document from loading any cross-origin resources that don't explicitly grant the document permission (using CORP or CORS).</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "asset": {
+        "url": "http://host.docker.internal:8000/sitemap.xml",
+        "method": "GET",
+        "parameter": "Cross-Origin-Embedder-Policy"
+      },
+      "cwe": "693",
+      "status": "confirmed",
+      "normalization_status": "complete",
+      "observed_at": "2026-11-01T22:45:23.692209Z",
+      "raw_artifact": "artifacts/f05/zap.json"
+    },
+    {
+      "schema_version": "evidence/v1",
+      "finding_id": "zap:90004",
+      "fingerprint": "sha256:929b211211ad26d7582f15640b3cc40b459452b53a8910df00c5ef69489ac0c5",
+      "tool": "zap",
+      "tool_version": "2.16.0",
+      "category": "runtime",
+      "severity": "medium",
+      "confidence": "high",
+      "message": "<p>Cross-Origin-Opener-Policy header is a response header that allows a site to control if others included documents share the same browsing context. Sharing the same browsing context with untrusted documents might lead to data leak.</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "asset": {
+        "url": "http://host.docker.internal:8000/",
+        "method": "GET",
+        "parameter": "Cross-Origin-Opener-Policy"
+      },
+      "cwe": "693",
+      "status": "confirmed",
+      "normalization_status": "complete",
+      "observed_at": "2026-11-01T22:45:23.692213Z",
+      "raw_artifact": "artifacts/f05/zap.json"
+    },
+    {
+      "schema_version": "evidence/v1",
+      "finding_id": "zap:90004",
+      "fingerprint": "sha256:2e5c9d9341520f38261a18ec83459961c393bf4d4c03f9fc251723d4c52a8d61",
+      "tool": "zap",
+      "tool_version": "2.16.0",
+      "category": "runtime",
+      "severity": "medium",
+      "confidence": "high",
+      "message": "<p>Cross-Origin-Opener-Policy header is a response header that allows a site to control if others included documents share the same browsing context. Sharing the same browsing context with untrusted documents might lead to data leak.</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "asset": {
+        "url": "http://host.docker.internal:8000/?q=test",
+        "method": "GET",
+        "parameter": "Cross-Origin-Opener-Policy"
+      },
+      "cwe": "693",
+      "status": "confirmed",
+      "normalization_status": "complete",
+      "observed_at": "2026-11-01T22:45:23.692217Z",
+      "raw_artifact": "artifacts/f05/zap.json"
+    },
+    {
+      "schema_version": "evidence/v1",
+      "finding_id": "zap:90004",
+      "fingerprint": "sha256:7239597e9369ca8a01cce356609d3db08db13058409e7acd7a6a93facc735a6a",
+      "tool": "zap",
+      "tool_version": "2.16.0",
+      "category": "runtime",
+      "severity": "medium",
+      "confidence": "high",
+      "message": "<p>Cross-Origin-Opener-Policy header is a response header that allows a site to control if others included documents share the same browsing context. Sharing the same browsing context with untrusted documents might lead to data leak.</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "asset": {
+        "url": "http://host.docker.internal:8000/robots.txt",
+        "method": "GET",
+        "parameter": "Cross-Origin-Opener-Policy"
+      },
+      "cwe": "693",
+      "status": "confirmed",
+      "normalization_status": "complete",
+      "observed_at": "2026-11-01T22:45:23.692221Z",
+      "raw_artifact": "artifacts/f05/zap.json"
+    },
+    {
+      "schema_version": "evidence/v1",
+      "finding_id": "zap:90004",
+      "fingerprint": "sha256:b2da99271ecdcfbfa407aac1e0e4afbe4206ee1c603ab50b46774122de7dc4bb",
+      "tool": "zap",
+      "tool_version": "2.16.0",
+      "category": "runtime",
+      "severity": "medium",
+      "confidence": "high",
+      "message": "<p>Cross-Origin-Opener-Policy header is a response header that allows a site to control if others included documents share the same browsing context. Sharing the same browsing context with untrusted documents might lead to data leak.</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "asset": {
+        "url": "http://host.docker.internal:8000/sitemap.xml",
+        "method": "GET",
+        "parameter": "Cross-Origin-Opener-Policy"
+      },
+      "cwe": "693",
+      "status": "confirmed",
+      "normalization_status": "complete",
+      "observed_at": "2026-11-01T22:45:23.692224Z",
+      "raw_artifact": "artifacts/f05/zap.json"
+    },
+    {
+      "schema_version": "evidence/v1",
+      "finding_id": "zap:90004",
+      "fingerprint": "sha256:929b211211ad26d7582f15640b3cc40b459452b53a8910df00c5ef69489ac0c5",
+      "tool": "zap",
+      "tool_version": "2.16.0",
+      "category": "runtime",
+      "severity": "medium",
+      "confidence": "high",
+      "message": "<p>Cross-Origin-Resource-Policy header is an opt-in header designed to counter side-channels attacks like Spectre. Resource should be specifically set as shareable amongst different origins.</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "asset": {
+        "url": "http://host.docker.internal:8000/",
+        "method": "GET",
+        "parameter": "Cross-Origin-Resource-Policy"
+      },
+      "cwe": "693",
+      "status": "confirmed",
+      "normalization_status": "complete",
+      "observed_at": "2026-11-01T22:45:23.692229Z",
+      "raw_artifact": "artifacts/f05/zap.json"
+    },
+    {
+      "schema_version": "evidence/v1",
+      "finding_id": "zap:90004",
+      "fingerprint": "sha256:2e5c9d9341520f38261a18ec83459961c393bf4d4c03f9fc251723d4c52a8d61",
+      "tool": "zap",
+      "tool_version": "2.16.0",
+      "category": "runtime",
+      "severity": "medium",
+      "confidence": "high",
+      "message": "<p>Cross-Origin-Resource-Policy header is an opt-in header designed to counter side-channels attacks like Spectre. Resource should be specifically set as shareable amongst different origins.</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "asset": {
+        "url": "http://host.docker.internal:8000/?q=test",
+        "method": "GET",
+        "parameter": "Cross-Origin-Resource-Policy"
+      },
+      "cwe": "693",
+      "status": "confirmed",
+      "normalization_status": "complete",
+      "observed_at": "2026-11-01T22:45:23.692236Z",
+      "raw_artifact": "artifacts/f05/zap.json"
+    },
+    {
+      "schema_version": "evidence/v1",
+      "finding_id": "zap:90004",
+      "fingerprint": "sha256:7239597e9369ca8a01cce356609d3db08db13058409e7acd7a6a93facc735a6a",
+      "tool": "zap",
+      "tool_version": "2.16.0",
+      "category": "runtime",
+      "severity": "medium",
+      "confidence": "high",
+      "message": "<p>Cross-Origin-Resource-Policy header is an opt-in header designed to counter side-channels attacks like Spectre. Resource should be specifically set as shareable amongst different origins.</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "asset": {
+        "url": "http://host.docker.internal:8000/robots.txt",
+        "method": "GET",
+        "parameter": "Cross-Origin-Resource-Policy"
+      },
+      "cwe": "693",
+      "status": "confirmed",
+      "normalization_status": "complete",
+      "observed_at": "2026-11-01T22:45:23.692240Z",
+      "raw_artifact": "artifacts/f05/zap.json"
+    },
+    {
+      "schema_version": "evidence/v1",
+      "finding_id": "zap:90004",
+      "fingerprint": "sha256:b2da99271ecdcfbfa407aac1e0e4afbe4206ee1c603ab50b46774122de7dc4bb",
+      "tool": "zap",
+      "tool_version": "2.16.0",
+      "category": "runtime",
+      "severity": "medium",
+      "confidence": "high",
+      "message": "<p>Cross-Origin-Resource-Policy header is an opt-in header designed to counter side-channels attacks like Spectre. Resource should be specifically set as shareable amongst different origins.</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "asset": {
+        "url": "http://host.docker.internal:8000/sitemap.xml",
+        "method": "GET",
+        "parameter": "Cross-Origin-Resource-Policy"
+      },
+      "cwe": "693",
+      "status": "confirmed",
+      "normalization_status": "complete",
+      "observed_at": "2026-11-01T22:45:23.692243Z",
+      "raw_artifact": "artifacts/f05/zap.json"
+    },
+    {
+      "schema_version": "evidence/v1",
+      "finding_id": "zap:10063",
+      "fingerprint": "sha256:f660b73a0714f011e9107f9ed1aed93b6a0c913c7b38a54055e9329c1e967d29",
+      "tool": "zap",
+      "tool_version": "2.16.0",
+      "category": "runtime",
+      "severity": "medium",
+      "confidence": "high",
+      "message": "<p>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "asset": {
+        "url": "http://host.docker.internal:8000/",
+        "method": "GET",
+        "parameter": ""
+      },
+      "cwe": "693",
+      "status": "confirmed",
+      "normalization_status": "complete",
+      "observed_at": "2026-11-01T22:45:23.692248Z",
+      "raw_artifact": "artifacts/f05/zap.json"
+    },
+    {
+      "schema_version": "evidence/v1",
+      "finding_id": "zap:10063",
+      "fingerprint": "sha256:966bfbd72e7006cefbe5a9d0d6c5128a5bb53f48edd358fd84f866bf73581988",
+      "tool": "zap",
+      "tool_version": "2.16.0",
+      "category": "runtime",
+      "severity": "medium",
+      "confidence": "high",
+      "message": "<p>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "asset": {
+        "url": "http://host.docker.internal:8000/?q=test",
+        "method": "GET",
+        "parameter": ""
+      },
+      "cwe": "693",
+      "status": "confirmed",
+      "normalization_status": "complete",
+      "observed_at": "2026-11-01T22:45:23.692251Z",
+      "raw_artifact": "artifacts/f05/zap.json"
+    },
+    {
+      "schema_version": "evidence/v1",
+      "finding_id": "zap:10063",
+      "fingerprint": "sha256:0845af5d8ee62d6bba1bb0487952b2a735c573828935538e8073cfee389902fe",
+      "tool": "zap",
+      "tool_version": "2.16.0",
+      "category": "runtime",
+      "severity": "medium",
+      "confidence": "high",
+      "message": "<p>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "asset": {
+        "url": "http://host.docker.internal:8000/robots.txt",
+        "method": "GET",
+        "parameter": ""
+      },
+      "cwe": "693",
+      "status": "confirmed",
+      "normalization_status": "complete",
+      "observed_at": "2026-11-01T22:45:23.692255Z",
+      "raw_artifact": "artifacts/f05/zap.json"
+    },
+    {
+      "schema_version": "evidence/v1",
+      "finding_id": "zap:10063",
+      "fingerprint": "sha256:694fa2b30ffb9d4f0f7a5ec110fdb11aa9d462b0b2070ea6ac69f802b22d2a99",
+      "tool": "zap",
+      "tool_version": "2.16.0",
+      "category": "runtime",
+      "severity": "medium",
+      "confidence": "high",
+      "message": "<p>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "asset": {
+        "url": "http://host.docker.internal:8000/sitemap.xml",
+        "method": "GET",
+        "parameter": ""
+      },
+      "cwe": "693",
+      "status": "confirmed",
+      "normalization_status": "complete",
+      "observed_at": "2026-11-01T22:45:23.692258Z",
+      "raw_artifact": "artifacts/f05/zap.json"
+    },
+    {
+      "schema_version": "evidence/v1",
+      "finding_id": "zap:10036",
+      "fingerprint": "sha256:53dc50552433777a0eba97337ade37305539847ea96c8a2b5131e79202febd8c",
+      "tool": "zap",
+      "tool_version": "2.16.0",
+      "category": "runtime",
+      "severity": "high",
+      "confidence": "high",
+      "message": "<p>The web/application server is leaking version information via the \"Server\" HTTP response header. Access to such information may facilitate attackers identifying other vulnerabilities your web/application server is subject to.</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "asset": {
+        "url": "http://host.docker.internal:8000/",
+        "method": "GET",
+        "parameter": ""
+      },
+      "cwe": "497",
+      "status": "confirmed",
+      "normalization_status": "complete",
+      "observed_at": "2026-11-01T22:45:23.692263Z",
+      "raw_artifact": "artifacts/f05/zap.json"
+    },
+    {
+      "schema_version": "evidence/v1",
+      "finding_id": "zap:10036",
+      "fingerprint": "sha256:abcd88d872e3cd7d4e568961c01bb9feabf546d2049ae0c57ee5fea070e6b961",
+      "tool": "zap",
+      "tool_version": "2.16.0",
+      "category": "runtime",
+      "severity": "high",
+      "confidence": "high",
+      "message": "<p>The web/application server is leaking version information via the \"Server\" HTTP response header. Access to such information may facilitate attackers identifying other vulnerabilities your web/application server is subject to.</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "asset": {
+        "url": "http://host.docker.internal:8000/?q=test",
+        "method": "GET",
+        "parameter": ""
+      },
+      "cwe": "497",
+      "status": "confirmed",
+      "normalization_status": "complete",
+      "observed_at": "2026-11-01T22:45:23.692267Z",
+      "raw_artifact": "artifacts/f05/zap.json"
+    },
+    {
+      "schema_version": "evidence/v1",
+      "finding_id": "zap:10036",
+      "fingerprint": "sha256:784d874fcb50e21905dff1a38e8000e9f74fae5f90a1de0c921efd9e867df097",
+      "tool": "zap",
+      "tool_version": "2.16.0",
+      "category": "runtime",
+      "severity": "high",
+      "confidence": "high",
+      "message": "<p>The web/application server is leaking version information via the \"Server\" HTTP response header. Access to such information may facilitate attackers identifying other vulnerabilities your web/application server is subject to.</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "asset": {
+        "url": "http://host.docker.internal:8000/robots.txt",
+        "method": "GET",
+        "parameter": ""
+      },
+      "cwe": "497",
+      "status": "confirmed",
+      "normalization_status": "complete",
+      "observed_at": "2026-11-01T22:45:23.692271Z",
+      "raw_artifact": "artifacts/f05/zap.json"
+    },
+    {
+      "schema_version": "evidence/v1",
+      "finding_id": "zap:10036",
+      "fingerprint": "sha256:1acb99501ab8409a64070d4c2ba3915602f73953b3eb1152489bf23852920f24",
+      "tool": "zap",
+      "tool_version": "2.16.0",
+      "category": "runtime",
+      "severity": "high",
+      "confidence": "high",
+      "message": "<p>The web/application server is leaking version information via the \"Server\" HTTP response header. Access to such information may facilitate attackers identifying other vulnerabilities your web/application server is subject to.</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "asset": {
+        "url": "http://host.docker.internal:8000/sitemap.xml",
+        "method": "GET",
+        "parameter": ""
+      },
+      "cwe": "497",
+      "status": "confirmed",
+      "normalization_status": "complete",
+      "observed_at": "2026-11-01T22:45:23.692275Z",
+      "raw_artifact": "artifacts/f05/zap.json"
+    },
+    {
+      "schema_version": "evidence/v1",
+      "finding_id": "zap:10021",
+      "fingerprint": "sha256:f30c7ec64f7473a1bab632db6f7fb554b9577395ace01ef0e6822391aed15dd8",
+      "tool": "zap",
+      "tool_version": "2.16.0",
+      "category": "runtime",
+      "severity": "medium",
+      "confidence": "high",
+      "message": "<p>The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "asset": {
+        "url": "http://host.docker.internal:8000/",
+        "method": "GET",
+        "parameter": "x-content-type-options"
+      },
+      "cwe": "693",
+      "status": "confirmed",
+      "normalization_status": "complete",
+      "observed_at": "2026-11-01T22:45:23.692279Z",
+      "raw_artifact": "artifacts/f05/zap.json"
+    },
+    {
+      "schema_version": "evidence/v1",
+      "finding_id": "zap:10021",
+      "fingerprint": "sha256:73a49d6fe3c84f3ea77aba002fb0bb13d1bdd2271772831a4a406c8ed2ab1bab",
+      "tool": "zap",
+      "tool_version": "2.16.0",
+      "category": "runtime",
+      "severity": "medium",
+      "confidence": "high",
+      "message": "<p>The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "asset": {
+        "url": "http://host.docker.internal:8000/?q=test",
+        "method": "GET",
+        "parameter": "x-content-type-options"
+      },
+      "cwe": "693",
+      "status": "confirmed",
+      "normalization_status": "complete",
+      "observed_at": "2026-11-01T22:45:23.692283Z",
+      "raw_artifact": "artifacts/f05/zap.json"
+    },
+    {
+      "schema_version": "evidence/v1",
+      "finding_id": "zap:10021",
+      "fingerprint": "sha256:8f86f6f1ebe5f8636e8d722da29461c62735b35646c1b6048b86d5a37db53565",
+      "tool": "zap",
+      "tool_version": "2.16.0",
+      "category": "runtime",
+      "severity": "medium",
+      "confidence": "high",
+      "message": "<p>The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "asset": {
+        "url": "http://host.docker.internal:8000/robots.txt",
+        "method": "GET",
+        "parameter": "x-content-type-options"
+      },
+      "cwe": "693",
+      "status": "confirmed",
+      "normalization_status": "complete",
+      "observed_at": "2026-11-01T22:45:23.692286Z",
+      "raw_artifact": "artifacts/f05/zap.json"
+    },
+    {
+      "schema_version": "evidence/v1",
+      "finding_id": "zap:10021",
+      "fingerprint": "sha256:b3e64ce97ee24241f4db906f5d616e843afb26cff78745f7e7712e0f9399c50b",
+      "tool": "zap",
+      "tool_version": "2.16.0",
+      "category": "runtime",
+      "severity": "medium",
+      "confidence": "high",
+      "message": "<p>The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "asset": {
+        "url": "http://host.docker.internal:8000/sitemap.xml",
+        "method": "GET",
+        "parameter": "x-content-type-options"
+      },
+      "cwe": "693",
+      "status": "confirmed",
+      "normalization_status": "complete",
+      "observed_at": "2026-11-01T22:45:23.692290Z",
+      "raw_artifact": "artifacts/f05/zap.json"
+    },
+    {
+      "schema_version": "evidence/v1",
+      "finding_id": "zap:10049",
+      "fingerprint": "sha256:d20a5407c2b4bb423c8bfb8ff37be6d90b24869cd4077e5afdb475907fdaa404",
+      "tool": "zap",
+      "tool_version": "2.16.0",
+      "category": "runtime",
+      "severity": "medium",
+      "confidence": "high",
+      "message": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "asset": {
+        "url": "http://host.docker.internal:8000/",
+        "method": "GET",
+        "parameter": ""
+      },
+      "cwe": "524",
+      "status": "confirmed",
+      "normalization_status": "complete",
+      "observed_at": "2026-11-01T22:45:23.692295Z",
+      "raw_artifact": "artifacts/f05/zap.json"
+    },
+    {
+      "schema_version": "evidence/v1",
+      "finding_id": "zap:10049",
+      "fingerprint": "sha256:e1dacfff70b331d95a9c4d09e168d99a0dbf61c3237c931cf6b1eb92164e53d7",
+      "tool": "zap",
+      "tool_version": "2.16.0",
+      "category": "runtime",
+      "severity": "medium",
+      "confidence": "high",
+      "message": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "asset": {
+        "url": "http://host.docker.internal:8000/?q=test",
+        "method": "GET",
+        "parameter": ""
+      },
+      "cwe": "524",
+      "status": "confirmed",
+      "normalization_status": "complete",
+      "observed_at": "2026-11-01T22:45:23.692298Z",
+      "raw_artifact": "artifacts/f05/zap.json"
+    },
+    {
+      "schema_version": "evidence/v1",
+      "finding_id": "zap:10049",
+      "fingerprint": "sha256:41777d689876f7682a24f70562444991a7023f98cd3a8a75ebfb38e6f6f5aebd",
+      "tool": "zap",
+      "tool_version": "2.16.0",
+      "category": "runtime",
+      "severity": "medium",
+      "confidence": "high",
+      "message": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "asset": {
+        "url": "http://host.docker.internal:8000/robots.txt",
+        "method": "GET",
+        "parameter": ""
+      },
+      "cwe": "524",
+      "status": "confirmed",
+      "normalization_status": "complete",
+      "observed_at": "2026-11-01T22:45:23.692302Z",
+      "raw_artifact": "artifacts/f05/zap.json"
+    },
+    {
+      "schema_version": "evidence/v1",
+      "finding_id": "zap:10049",
+      "fingerprint": "sha256:d804fbb299c53c8aba9d771dbe30b2aa26cc702f7349cef0152f82136ff3de25",
+      "tool": "zap",
+      "tool_version": "2.16.0",
+      "category": "runtime",
+      "severity": "medium",
+      "confidence": "high",
+      "message": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "asset": {
+        "url": "http://host.docker.internal:8000/sitemap.xml",
+        "method": "GET",
+        "parameter": ""
+      },
+      "cwe": "524",
+      "status": "confirmed",
+      "normalization_status": "complete",
+      "observed_at": "2026-11-01T22:45:23.692306Z",
+      "raw_artifact": "artifacts/f05/zap.json"
+    }
+  ],
+  "normalization": {
+    "status": "complete",
+    "adapter_version": "0.1.0",
+    "raw_artifacts": [
+      "artifacts/f05/zap.json"
+    ]
+  }
+}

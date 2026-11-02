@@ -1,0 +1,130 @@
+{
+  "schema_version": "evidence-document/v1",
+  "run": {
+    "run_id": "local-f05-clean",
+    "fixture_id": "F05-clean",
+    "commit_id": "24232905172e36e7200b0654ca05723e47687ec5",
+    "pipeline": "proposed",
+    "stage": "runtime"
+  },
+  "gate": {
+    "gate_id": "runtime-analysis",
+    "required": true,
+    "completed": true,
+    "tool_exit_code": 0,
+    "tool_version": "2.16.0"
+  },
+  "findings": [
+    {
+      "schema_version": "evidence/v1",
+      "finding_id": "zap:10049",
+      "fingerprint": "sha256:d20a5407c2b4bb423c8bfb8ff37be6d90b24869cd4077e5afdb475907fdaa404",
+      "tool": "zap",
+      "tool_version": "2.16.0",
+      "category": "runtime",
+      "severity": "low",
+      "confidence": "high",
+      "message": "<p>The response contents are not storable by caching components such as proxy servers. If the response does not contain sensitive, personal or user-specific information, it may benefit from being stored and cached, to improve performance.</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "asset": {
+        "url": "http://host.docker.internal:8000/",
+        "method": "GET",
+        "parameter": ""
+      },
+      "cwe": "524",
+      "status": "confirmed",
+      "normalization_status": "complete",
+      "observed_at": "2026-11-01T23:05:24.705273Z",
+      "raw_artifact": "artifacts/f05-clean/zap.json"
+    },
+    {
+      "schema_version": "evidence/v1",
+      "finding_id": "zap:10049",
+      "fingerprint": "sha256:e1dacfff70b331d95a9c4d09e168d99a0dbf61c3237c931cf6b1eb92164e53d7",
+      "tool": "zap",
+      "tool_version": "2.16.0",
+      "category": "runtime",
+      "severity": "low",
+      "confidence": "high",
+      "message": "<p>The response contents are not storable by caching components such as proxy servers. If the response does not contain sensitive, personal or user-specific information, it may benefit from being stored and cached, to improve performance.</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "asset": {
+        "url": "http://host.docker.internal:8000/?q=test",
+        "method": "GET",
+        "parameter": ""
+      },
+      "cwe": "524",
+      "status": "confirmed",
+      "normalization_status": "complete",
+      "observed_at": "2026-11-01T23:05:24.705469Z",
+      "raw_artifact": "artifacts/f05-clean/zap.json"
+    },
+    {
+      "schema_version": "evidence/v1",
+      "finding_id": "zap:10049",
+      "fingerprint": "sha256:41777d689876f7682a24f70562444991a7023f98cd3a8a75ebfb38e6f6f5aebd",
+      "tool": "zap",
+      "tool_version": "2.16.0",
+      "category": "runtime",
+      "severity": "low",
+      "confidence": "high",
+      "message": "<p>The response contents are not storable by caching components such as proxy servers. If the response does not contain sensitive, personal or user-specific information, it may benefit from being stored and cached, to improve performance.</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "asset": {
+        "url": "http://host.docker.internal:8000/robots.txt",
+        "method": "GET",
+        "parameter": ""
+      },
+      "cwe": "524",
+      "status": "confirmed",
+      "normalization_status": "complete",
+      "observed_at": "2026-11-01T23:05:24.705478Z",
+      "raw_artifact": "artifacts/f05-clean/zap.json"
+    },
+    {
+      "schema_version": "evidence/v1",
+      "finding_id": "zap:10049",
+      "fingerprint": "sha256:d804fbb299c53c8aba9d771dbe30b2aa26cc702f7349cef0152f82136ff3de25",
+      "tool": "zap",
+      "tool_version": "2.16.0",
+      "category": "runtime",
+      "severity": "low",
+      "confidence": "high",
+      "message": "<p>The response contents are not storable by caching components such as proxy servers. If the response does not contain sensitive, personal or user-specific information, it may benefit from being stored and cached, to improve performance.</p>",
+      "requirement_ids": [
+        "SSDF-RV.1",
+        "ASVS-V4",
+        "ASVS-V5"
+      ],
+      "asset": {
+        "url": "http://host.docker.internal:8000/sitemap.xml",
+        "method": "GET",
+        "parameter": ""
+      },
+      "cwe": "524",
+      "status": "confirmed",
+      "normalization_status": "complete",
+      "observed_at": "2026-11-01T23:05:24.705483Z",
+      "raw_artifact": "artifacts/f05-clean/zap.json"
+    }
+  ],
+  "normalization": {
+    "status": "complete",
+    "adapter_version": "0.1.0",
+    "raw_artifacts": [
+      "artifacts/f05-clean/zap.json"
+    ]
+  }
+}

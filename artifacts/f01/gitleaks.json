@@ -1,0 +1,22 @@
+[
+ {
+  "RuleID": "stripe-access-token",
+  "Description": "Found a Stripe Access Token, posing a risk to payment processing services and sensitive financial data.",
+  "StartLine": 4,
+  "EndLine": 4,
+  "StartColumn": 25,
+  "EndColumn": 78,
+  "Match": "REDACTED\"",
+  "Secret": "REDACTED",
+  "File": "fixtures/controlled-app/F01-secret/src/config.js",
+  "SymlinkFile": "",
+  "Commit": "",
+  "Entropy": 2.8997746,
+  "Author": "",
+  "Email": "",
+  "Date": "",
+  "Message": "",
+  "Tags": [],
+  "Fingerprint": "fixtures/controlled-app/F01-secret/src/config.js:stripe-access-token:4"
+ }
+]

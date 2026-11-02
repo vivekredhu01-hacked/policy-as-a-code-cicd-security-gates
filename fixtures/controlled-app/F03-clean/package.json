@@ -1,0 +1,9 @@
+{
+  "name": "policy-gate-controlled-app-f03-clean",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Clean dependency control",
+  "dependencies": {
+    "lodash": "4.18.0"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "completed_gates": [
+    "source-analysis"
+  ],
+  "decision": "WARN",
+  "deployment_allowed": true,
+  "missing_required_gates": [],
+  "policy_version": "0.1.0",
+  "reasons": [
+    {
+      "finding_id": "semgrep:fixtures.controlled-app.F07-low.controlled-debug-log",
+      "gate_id": "source-analysis",
+      "message": "Controlled F07 low-severity diagnostic logging.",
+      "requirement_ids": [
+        "SSDF-PW.7",
+        "ASVS-V10"
+      ],
+      "severity": "low"
+    }
+  ],
+  "run": {
+    "commit_id": "24232905172e36e7200b0654ca05723e47687ec5",
+    "fixture_id": "F07",
+    "pipeline": "proposed",
+    "run_id": "local-f07",
+    "stage": "source"
+  },
+  "schema_version": "decision/v1"
+}

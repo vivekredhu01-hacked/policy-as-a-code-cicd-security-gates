@@ -1,0 +1,11 @@
+rules:
+  - id: controlled-debug-log
+    languages: [javascript]
+    severity: WARNING
+    message: "Controlled F07 low-severity diagnostic logging."
+    metadata:
+      severity: low
+      requirement_ids:
+        - SSDF-PW.7
+        - ASVS-V10
+    pattern: console.log(...)

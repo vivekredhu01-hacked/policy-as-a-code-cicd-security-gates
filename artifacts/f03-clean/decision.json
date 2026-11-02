@@ -1,0 +1,14 @@
+{
+  "schema_version": "decision/v1",
+  "decision": "PASS",
+  "deployment_allowed": true,
+  "reasons": [],
+  "run": {
+    "run_id": "local-f03-clean",
+    "fixture_id": "F03-clean",
+    "commit_id": "24232905172e36e7200b0654ca05723e47687ec5",
+    "pipeline": "proposed",
+    "stage": "dependencies"
+  },
+  "policy_version": "0.1.0"
+}

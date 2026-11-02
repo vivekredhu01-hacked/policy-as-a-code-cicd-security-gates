@@ -1,0 +1,29 @@
+{
+  "completed_gates": [
+    "source-analysis"
+  ],
+  "decision": "BLOCK",
+  "deployment_allowed": false,
+  "missing_required_gates": [],
+  "policy_version": "0.1.0",
+  "reasons": [
+    {
+      "finding_id": "semgrep:fixtures.controlled-app.F02-source.controlled-no-eval",
+      "gate_id": "source-analysis",
+      "message": "Controlled F02 source vulnerability: dynamic evaluation is prohibited.",
+      "requirement_ids": [
+        "SSDF-PW.7",
+        "ASVS-V5"
+      ],
+      "severity": "high"
+    }
+  ],
+  "run": {
+    "commit_id": "24232905172e36e7200b0654ca05723e47687ec5",
+    "fixture_id": "F02",
+    "pipeline": "proposed",
+    "run_id": "local-f02",
+    "stage": "source"
+  },
+  "schema_version": "decision/v1"
+}

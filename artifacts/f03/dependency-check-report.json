@@ -1,0 +1,317 @@
+{
+    "reportSchema": "1.1",
+    "scanInfo": {
+        "engineVersion": "13.0.0",
+        "dataSource": [
+{
+                "name": "NVD API Last Checked",
+                "timestamp": "2026-11-02T17:11:40Z"
+            }
+,{
+                "name": "NVD API Last Modified",
+                "timestamp": "2026-11-02T16:31:51Z"
+            }
+        ]
+
+
+    },
+    "projectInfo": {
+        "name": "policy-reuse-evaluation-f03",
+        "reportDate": "2026-11-02T17:22:02.587450Z",
+        "credits": {
+            "NVD": "This product uses the NVD API but is not endorsed or certified by the NVD. This report contains data retrieved from the National Vulnerability Database: https://nvd.nist.gov",
+            "CISA": "This report may contain data retrieved from the CISA Known Exploited Vulnerability Catalog: https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+            "NPM": "This report may contain data retrieved from the Github Advisory Database (via NPM Audit API): https://github.com/advisories/",
+            "RETIREJS": "This report may contain data retrieved from the RetireJS community: https://retirejs.github.io/retire.js/",
+            "OSSINDEX": "This report may contain data retrieved from the Sonatype Guide OSS Index API: https://www.sonatype.com/products/sonatype-guide/oss-index-users"
+        }
+    },
+    "dependencies": [
+{
+            "isVirtual": true,
+            "fileName": "lodash:4.17.19",
+            "filePath": "\/Users\/vivekredhu01\/Documents\/Practicum\/policy-reuse-evaluation\/fixtures\/controlled-app\/F03-dependency\/package-lock.json?lodash"
+            ,"projectReferences": [
+                "package-lock.json: transitive"
+            ]
+            ,"evidenceCollected": {
+                "vendorEvidence": [
+{
+                            "type": "vendor",
+                            "confidence": "HIGH",
+                            "source": "package.json",
+                            "name": "name",
+                            "value": "lodash"
+                        }
+                ],
+                "productEvidence": [
+{
+                            "type": "product",
+                            "confidence": "HIGHEST",
+                            "source": "package.json",
+                            "name": "name",
+                            "value": "lodash"
+                    }
+                ],
+                "versionEvidence": [
+                    {
+                        "type": "version",
+                        "confidence": "HIGHEST",
+                        "source": "package.json",
+                        "name": "version",
+                        "value": "4.17.19"
+                    }
+                ]
+            }
+                ,"packages": [
+                    {
+                        "id": "pkg:npm\/lodash@4.17.19"
+,"confidence": "HIGHEST"                    }
+            ]
+            ,"vulnerabilities": [
+ {
+                "source": "NPM",
+                "name": "GHSA-r5fr-rjxr-66jc",
+"unscored": "true", "severity" : "high",
+                    "cvssv3": {
+                        "baseScore": 8.100000381469727
+                        ,"attackVector": "NETWORK"
+                        ,"attackComplexity": "HIGH"
+                        ,"privilegesRequired": "NONE"
+                        ,"userInteraction": "NONE"
+                        ,"scope": "UNCHANGED"
+                        ,"confidentialityImpact": "HIGH"
+                        ,"integrityImpact": "HIGH"
+                        ,"availabilityImpact": "HIGH"
+                        ,"baseSeverity": "HIGH"
+,"version": "3.1"                    },
+                    "cwes": [
+                        "CWE-94"                    ],
+                "description": "### Impact\n\nThe fix for [CVE-2021-23337](https:\/\/github.com\/advisories\/GHSA-35jh-r3h4-6jhm) added validation for the `variable` option in `_.template` but did not apply the same validation to `options.imports` key names. Both paths flow into the same `Function()` constructor sink.\n\nWhen an application passes untrusted input as `options.imports` key names, an attacker can inject default-parameter expressions that execute arbitrary code at template compilation time.\n\nAdditionally, `_.template` uses `assignInWith` to merge imports, which enumerates inherited properties via `for..in`. If `Object.prototype` has been polluted by any other vector, the polluted keys are copied into the imports object and passed to `Function()`.\n\n### Patches\n\nUsers should upgrade to version 4.18.0.\n\nThe fix applies two changes:\n1. Validate `importsKeys` against the existing `reForbiddenIdentifierChars` regex (same check already used for the `variable` option)\n2. Replace `assignInWith` with `assignWith` when merging imports, so only own properties are enumerated\n\n### Workarounds\n\nDo not pass untrusted input as key names in `options.imports`. Only use developer-controlled, static key names.",
+                "notes": "",
+                "references": [
+ {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2026-4800","name": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2026-4800"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/cna.openjsf.org\/security-advisories.html","name": "https:\/\/cna.openjsf.org\/security-advisories.html"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/advisories\/GHSA-35jh-r3h4-6jhm","name": "https:\/\/github.com\/advisories\/GHSA-35jh-r3h4-6jhm"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/advisories\/GHSA-r5fr-rjxr-66jc","name": "https:\/\/github.com\/advisories\/GHSA-r5fr-rjxr-66jc"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/lodash\/lodash\/security\/advisories\/GHSA-r5fr-rjxr-66jc","name": "https:\/\/github.com\/lodash\/lodash\/security\/advisories\/GHSA-r5fr-rjxr-66jc"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/lodash\/lodash\/commit\/3469357cff396a26c363f8c1b5a91dde28ba4b1c","name": "https:\/\/github.com\/lodash\/lodash\/commit\/3469357cff396a26c363f8c1b5a91dde28ba4b1c"                    }                ],
+                "vulnerableSoftware": [
+ {
+                        "software": { 
+                            "id":"cpe:2.3:a:*:lodash:\\>\\=4.0.0\\<\\=4.17.23:*:*:*:*:*:*:*"
+                        }
+                    }                ]
+                }, {
+                "source": "NPM",
+                "name": "GHSA-35jh-r3h4-6jhm",
+"unscored": "true", "severity" : "high",
+                    "cvssv3": {
+                        "baseScore": 7.199999809265137
+                        ,"attackVector": "NETWORK"
+                        ,"attackComplexity": "LOW"
+                        ,"privilegesRequired": "HIGH"
+                        ,"userInteraction": "NONE"
+                        ,"scope": "UNCHANGED"
+                        ,"confidentialityImpact": "HIGH"
+                        ,"integrityImpact": "HIGH"
+                        ,"availabilityImpact": "HIGH"
+                        ,"baseSeverity": "HIGH"
+,"version": "3.1"                    },
+                    "cwes": [
+                        "CWE-77",                        "CWE-94"                    ],
+                "description": "`lodash` versions prior to 4.17.21 are vulnerable to Command Injection via the template function.",
+                "notes": "",
+                "references": [
+ {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGWEBJARSBOWER-1074928","name": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGWEBJARSBOWER-1074928"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/advisories\/GHSA-35jh-r3h4-6jhm","name": "https:\/\/github.com\/advisories\/GHSA-35jh-r3h4-6jhm"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/snyk.io\/vuln\/SNYK-JS-LODASH-1040724","name": "https:\/\/snyk.io\/vuln\/SNYK-JS-LODASH-1040724"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/www.oracle.com\/security-alerts\/cpujul2022.html","name": "https:\/\/www.oracle.com\/security-alerts\/cpujul2022.html"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/rubysec\/ruby-advisory-db\/blob\/master\/gems\/lodash-rails\/CVE-2021-23337.yml","name": "https:\/\/github.com\/rubysec\/ruby-advisory-db\/blob\/master\/gems\/lodash-rails\/CVE-2021-23337.yml"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/www.oracle.com\/\/security-alerts\/cpujul2021.html","name": "https:\/\/www.oracle.com\/\/security-alerts\/cpujul2021.html"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2021-23337","name": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2021-23337"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/www.oracle.com\/security-alerts\/cpuoct2021.html","name": "https:\/\/www.oracle.com\/security-alerts\/cpuoct2021.html"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGWEBJARSBOWERGITHUBLODASH-1074931","name": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGWEBJARSBOWERGITHUBLODASH-1074931"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/cert-portal.siemens.com\/productcert\/pdf\/ssa-637483.pdf","name": "https:\/\/cert-portal.siemens.com\/productcert\/pdf\/ssa-637483.pdf"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGWEBJARSNPM-1074929","name": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGWEBJARSNPM-1074929"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGFUJIONWEBJARS-1074932","name": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGFUJIONWEBJARS-1074932"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/lodash\/lodash\/commit\/3469357cff396a26c363f8c1b5a91dde28ba4b1c","name": "https:\/\/github.com\/lodash\/lodash\/commit\/3469357cff396a26c363f8c1b5a91dde28ba4b1c"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/lodash\/lodash\/blob\/ddfd9b11a0126db2302cb70ec9973b66baec0975\/lodash.js#L14851","name": "https:\/\/github.com\/lodash\/lodash\/blob\/ddfd9b11a0126db2302cb70ec9973b66baec0975\/lodash.js#L14851"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/www.oracle.com\/security-alerts\/cpujan2022.html","name": "https:\/\/www.oracle.com\/security-alerts\/cpujan2022.html"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/security.netapp.com\/advisory\/ntap-20210312-0006","name": "https:\/\/security.netapp.com\/advisory\/ntap-20210312-0006"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGWEBJARS-1074930","name": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGWEBJARS-1074930"                    }                ],
+                "vulnerableSoftware": [
+ {
+                        "software": { 
+                            "id":"cpe:2.3:a:*:lodash:\\<4.17.21:*:*:*:*:*:*:*"
+                        }
+                    }                ]
+                }, {
+                "source": "NPM",
+                "name": "GHSA-f23m-r3pf-42rh",
+"unscored": "true", "severity" : "moderate",
+                    "cvssv3": {
+                        "baseScore": 6.5
+                        ,"attackVector": "NETWORK"
+                        ,"attackComplexity": "LOW"
+                        ,"privilegesRequired": "NONE"
+                        ,"userInteraction": "NONE"
+                        ,"scope": "UNCHANGED"
+                        ,"confidentialityImpact": "NONE"
+                        ,"integrityImpact": "LOW"
+                        ,"availabilityImpact": "LOW"
+                        ,"baseSeverity": "MEDIUM"
+,"version": "3.1"                    },
+                    "cwes": [
+                        "CWE-1321"                    ],
+                "description": "### Impact\n\nLodash versions 4.17.23 and earlier are vulnerable to prototype pollution in the `_.unset` and `_.omit` functions. The fix for [CVE-2025-13465](https:\/\/github.com\/lodash\/lodash\/security\/advisories\/GHSA-xxjr-mmjv-4gpg) only guards against string key members, so an attacker can bypass the check by passing array-wrapped path segments. This allows deletion of properties from built-in prototypes such as `Object.prototype`, `Number.prototype`, and `String.prototype`.\n\nThe issue permits deletion of prototype properties but does not allow overwriting their original behavior.\n\n### Patches\n\nThis issue is patched in 4.18.0.\n\n### Workarounds\n\nNone. Upgrade to the patched version.",
+                "notes": "",
+                "references": [
+ {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/lodash\/lodash\/security\/advisories\/GHSA-f23m-r3pf-42rh","name": "https:\/\/github.com\/lodash\/lodash\/security\/advisories\/GHSA-f23m-r3pf-42rh"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2026-2950","name": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2026-2950"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/advisories\/GHSA-f23m-r3pf-42rh","name": "https:\/\/github.com\/advisories\/GHSA-f23m-r3pf-42rh"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/lodash\/lodash\/security\/advisories\/GHSA-xxjr-mmjv-4gpg","name": "https:\/\/github.com\/lodash\/lodash\/security\/advisories\/GHSA-xxjr-mmjv-4gpg"                    }                ],
+                "vulnerableSoftware": [
+ {
+                        "software": { 
+                            "id":"cpe:2.3:a:*:lodash:\\<\\=4.17.23:*:*:*:*:*:*:*"
+                        }
+                    }                ]
+                }, {
+                "source": "NPM",
+                "name": "GHSA-xxjr-mmjv-4gpg",
+"unscored": "true", "severity" : "moderate",
+                    "cvssv3": {
+                        "baseScore": 6.5
+                        ,"attackVector": "NETWORK"
+                        ,"attackComplexity": "LOW"
+                        ,"privilegesRequired": "NONE"
+                        ,"userInteraction": "NONE"
+                        ,"scope": "UNCHANGED"
+                        ,"confidentialityImpact": "NONE"
+                        ,"integrityImpact": "LOW"
+                        ,"availabilityImpact": "LOW"
+                        ,"baseSeverity": "MEDIUM"
+,"version": "3.1"                    },
+                    "cwes": [
+                        "CWE-1321"                    ],
+                "description": "### Impact\n\nLodash versions 4.0.0 through 4.17.22 are vulnerable to prototype pollution in the `_.unset` and `_.omit` functions. An attacker can pass crafted paths which cause Lodash to delete methods from global prototypes. \n\nThe issue permits deletion of properties but does not allow overwriting their original behavior.  \n\n### Patches\n\nThis issue is patched on 4.17.23.",
+                "notes": "",
+                "references": [
+ {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2025-13465","name": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2025-13465"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/lodash\/lodash\/commit\/edadd452146f7e4bad4ea684e955708931d84d81","name": "https:\/\/github.com\/lodash\/lodash\/commit\/edadd452146f7e4bad4ea684e955708931d84d81"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/advisories\/GHSA-xxjr-mmjv-4gpg","name": "https:\/\/github.com\/advisories\/GHSA-xxjr-mmjv-4gpg"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/lodash\/lodash\/security\/advisories\/GHSA-xxjr-mmjv-4gpg","name": "https:\/\/github.com\/lodash\/lodash\/security\/advisories\/GHSA-xxjr-mmjv-4gpg"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/cert-portal.siemens.com\/productcert\/html\/ssa-253495.html","name": "https:\/\/cert-portal.siemens.com\/productcert\/html\/ssa-253495.html"                    }                ],
+                "vulnerableSoftware": [
+ {
+                        "software": { 
+                            "id":"cpe:2.3:a:*:lodash:\\>\\=4.0.0\\<\\=4.17.22:*:*:*:*:*:*:*"
+                        }
+                    }                ]
+                }, {
+                "source": "NPM",
+                "name": "GHSA-29mw-wpgm-hmr9",
+"unscored": "true", "severity" : "moderate",
+                    "cvssv3": {
+                        "baseScore": 5.300000190734863
+                        ,"attackVector": "NETWORK"
+                        ,"attackComplexity": "LOW"
+                        ,"privilegesRequired": "NONE"
+                        ,"userInteraction": "NONE"
+                        ,"scope": "UNCHANGED"
+                        ,"confidentialityImpact": "NONE"
+                        ,"integrityImpact": "NONE"
+                        ,"availabilityImpact": "LOW"
+                        ,"baseSeverity": "MEDIUM"
+,"version": "3.1"                    },
+                    "cwes": [
+                        "CWE-400",                        "CWE-1333"                    ],
+                "description": "All versions of package lodash prior to 4.17.21 are vulnerable to Regular Expression Denial of Service (ReDoS) via the `toNumber`, `trim` and `trimEnd` functions. \n\nSteps to reproduce (provided by reporter Liyuan Chen):\n```js\nvar lo = require('lodash');\n\nfunction build_blank(n) {\n    var ret = \"1\"\n    for (var i = 0; i < n; i++) {\n        ret += \" \"\n    }\n    return ret + \"1\";\n}\nvar s = build_blank(50000) var time0 = Date.now();\nlo.trim(s) \nvar time_cost0 = Date.now() - time0;\nconsole.log(\"time_cost0: \" + time_cost0);\nvar time1 = Date.now();\nlo.toNumber(s) var time_cost1 = Date.now() - time1;\nconsole.log(\"time_cost1: \" + time_cost1);\nvar time2 = Date.now();\nlo.trimEnd(s);\nvar time_cost2 = Date.now() - time2;\nconsole.log(\"time_cost2: \" + time_cost2);\n```",
+                "notes": "",
+                "references": [
+ {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/snyk.io\/vuln\/SNYK-JS-LODASH-1018905","name": "https:\/\/snyk.io\/vuln\/SNYK-JS-LODASH-1018905"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/advisories\/GHSA-29mw-wpgm-hmr9","name": "https:\/\/github.com\/advisories\/GHSA-29mw-wpgm-hmr9"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGWEBJARSBOWERGITHUBLODASH-1074895","name": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGWEBJARSBOWERGITHUBLODASH-1074895"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/lodash\/lodash\/pull\/5065\/commits\/02906b8191d3c100c193fe6f7b27d1c40f200bb7","name": "https:\/\/github.com\/lodash\/lodash\/pull\/5065\/commits\/02906b8191d3c100c193fe6f7b27d1c40f200bb7"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGWEBJARS-1074894","name": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGWEBJARS-1074894"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/www.oracle.com\/security-alerts\/cpujul2022.html","name": "https:\/\/www.oracle.com\/security-alerts\/cpujul2022.html"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/lodash\/lodash\/blob\/npm\/trimEnd.js%23L8","name": "https:\/\/github.com\/lodash\/lodash\/blob\/npm\/trimEnd.js%23L8"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGWEBJARSNPM-1074893","name": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGWEBJARSNPM-1074893"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/www.oracle.com\/\/security-alerts\/cpujul2021.html","name": "https:\/\/www.oracle.com\/\/security-alerts\/cpujul2021.html"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/www.oracle.com\/security-alerts\/cpuoct2021.html","name": "https:\/\/www.oracle.com\/security-alerts\/cpuoct2021.html"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2020-28500","name": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2020-28500"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/cert-portal.siemens.com\/productcert\/pdf\/ssa-637483.pdf","name": "https:\/\/cert-portal.siemens.com\/productcert\/pdf\/ssa-637483.pdf"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/github\/advisory-database\/pull\/6139","name": "https:\/\/github.com\/github\/advisory-database\/pull\/6139"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGFUJIONWEBJARS-1074896","name": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGFUJIONWEBJARS-1074896"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/lodash\/lodash\/commit\/c4847ebe7d14540bb28a8b932a9ce1b9ecbfee1a","name": "https:\/\/github.com\/lodash\/lodash\/commit\/c4847ebe7d14540bb28a8b932a9ce1b9ecbfee1a"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/lodash\/lodash\/pull\/5065","name": "https:\/\/github.com\/lodash\/lodash\/pull\/5065"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGWEBJARSBOWER-1074892","name": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGWEBJARSBOWER-1074892"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/rubysec\/ruby-advisory-db\/blob\/master\/gems\/lodash-rails\/CVE-2020-28500.yml","name": "https:\/\/github.com\/rubysec\/ruby-advisory-db\/blob\/master\/gems\/lodash-rails\/CVE-2020-28500.yml"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/www.oracle.com\/security-alerts\/cpujan2022.html","name": "https:\/\/www.oracle.com\/security-alerts\/cpujan2022.html"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/security.netapp.com\/advisory\/ntap-20210312-0006","name": "https:\/\/security.netapp.com\/advisory\/ntap-20210312-0006"                    }                ],
+                "vulnerableSoftware": [
+ {
+                        "software": { 
+                            "id":"cpe:2.3:a:*:lodash:\\>\\=4.0.0\\<4.17.21:*:*:*:*:*:*:*"
+                        }
+                    }                ]
+                }            ]        }    ]
+}

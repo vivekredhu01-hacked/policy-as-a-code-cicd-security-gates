@@ -1,0 +1,225 @@
+schema_version: ground-truth/v1
+experiment:
+  title: Policy-as-Code security gates controlled comparative experiment
+  asvs_version: "4.0.3"
+  policy_version: "0.1.0"
+  baseline:
+    security_check_stage: late-security
+  proposed:
+    security_check_stage: source
+fixtures:
+  - fixture_id: F01
+    control_id: F06
+    vulnerability_class: secret
+    description: Synthetic detector-compatible payment API key committed to source configuration.
+    ground_truth: true
+    affected_asset: fixtures/controlled-app/F01-secret/src/config.js
+    expected_tool: gitleaks
+    requirement_ids:
+      - SSDF-PW.5
+      - ASVS-V6
+    minimum_severity: high
+    expected_first_stage: source
+    baseline_expected_detection: late-security
+    expected_decision: BLOCK
+    deployment_expected: false
+    false_positive_control: F06
+    safety_note: The value is synthetic and must never be used as a credential.
+  - fixture_id: F06
+    control_id: null
+    vulnerability_class: clean-control
+    description: Secure counterpart with equivalent application behavior and no intentional finding.
+    ground_truth: false
+    affected_asset: fixtures/controlled-app/clean/src/config.js
+    expected_tool: gitleaks
+    requirement_ids:
+      - SSDF-PW.5
+      - ASVS-V6
+    minimum_severity: none
+    expected_first_stage: none
+    baseline_expected_detection: none
+    expected_decision: PASS
+    deployment_expected: true
+    false_positive_control: null
+  - fixture_id: F02
+    control_id: F02-clean
+    vulnerability_class: source
+    description: Controlled dynamic evaluation pattern in JavaScript source.
+    ground_truth: true
+    affected_asset: fixtures/controlled-app/F02-source/src/unsafe.js
+    expected_tool: semgrep
+    requirement_ids:
+      - SSDF-PW.7
+      - ASVS-V5
+    minimum_severity: high
+    expected_first_stage: source
+    baseline_expected_detection: late-security
+    expected_decision: BLOCK
+    deployment_expected: false
+    false_positive_control: F02-clean
+  - fixture_id: F02-clean
+    control_id: null
+    vulnerability_class: clean-control
+    description: Safe source counterpart using string conversion instead of dynamic evaluation.
+    ground_truth: false
+    affected_asset: fixtures/controlled-app/F02-clean/src/unsafe.js
+    expected_tool: semgrep
+    requirement_ids:
+      - SSDF-PW.7
+      - ASVS-V5
+    minimum_severity: none
+    expected_first_stage: none
+    baseline_expected_detection: none
+    expected_decision: PASS
+    deployment_expected: true
+    false_positive_control: null
+  - fixture_id: F03
+    control_id: F03-clean
+    vulnerability_class: dependency
+    description: Controlled vulnerable lodash dependency pinned in the lockfile.
+    ground_truth: true
+    affected_asset: fixtures/controlled-app/F03-dependency/package-lock.json
+    expected_tool: dependency-check
+    requirement_ids:
+      - SSDF-PS.3
+      - ASVS-V1
+      - ASVS-V14
+    minimum_severity: high
+    expected_first_stage: dependencies
+    baseline_expected_detection: late-security
+    expected_decision: BLOCK
+    deployment_expected: false
+    false_positive_control: F03-clean
+  - fixture_id: F03-clean
+    control_id: null
+    vulnerability_class: clean-control
+    description: Dependency control using lodash 4.18.0, patched for the
+      advisories reported against earlier releases.
+    ground_truth: false
+    affected_asset: fixtures/controlled-app/F03-clean/package-lock.json
+    expected_tool: dependency-check
+    requirement_ids:
+      - SSDF-PS.3
+      - ASVS-V1
+      - ASVS-V14
+    minimum_severity: none
+    expected_first_stage: none
+    baseline_expected_detection: none
+    expected_decision: PASS
+    deployment_expected: true
+    false_positive_control: null
+  - fixture_id: F04
+    control_id: F04-clean
+    vulnerability_class: container
+    description: Controlled outdated Python base image with OS-package vulnerabilities.
+    ground_truth: true
+    affected_asset: fixtures/controlled-app/F04-container/Dockerfile
+    expected_tool: trivy
+    requirement_ids:
+      - SSDF-PW.6
+      - ASVS-V14
+    minimum_severity: high
+    expected_first_stage: container
+    baseline_expected_detection: late-security
+    expected_decision: BLOCK
+    deployment_expected: false
+    false_positive_control: F04-clean
+  - fixture_id: F04-clean
+    control_id: null
+    vulnerability_class: clean-control
+    description: Scratch-based container control without an intentional vulnerability.
+    ground_truth: false
+    affected_asset: fixtures/controlled-app/F04-clean/Dockerfile
+    expected_tool: trivy
+    requirement_ids:
+      - SSDF-PW.6
+      - ASVS-V14
+    minimum_severity: none
+    expected_first_stage: none
+    baseline_expected_detection: none
+    expected_decision: PASS
+    deployment_expected: true
+    false_positive_control: null
+  - fixture_id: F05
+    control_id: F05-clean
+    vulnerability_class: runtime
+    description: Controlled reflected input vulnerability in a test web endpoint.
+    ground_truth: true
+    affected_asset: fixtures/controlled-app/F05-runtime/vulnerable/server.py
+    expected_tool: zap
+    requirement_ids:
+      - SSDF-RV.1
+      - ASVS-V4
+      - ASVS-V5
+    minimum_severity: high
+    expected_first_stage: runtime
+    baseline_expected_detection: late-security
+    expected_decision: BLOCK
+    deployment_expected: false
+    false_positive_control: F05-clean
+  - fixture_id: F05-clean
+    control_id: null
+    vulnerability_class: clean-control
+    description: Runtime control that escapes reflected query input.
+    ground_truth: false
+    affected_asset: fixtures/controlled-app/F05-runtime/clean/server.py
+    expected_tool: zap
+    requirement_ids:
+      - SSDF-RV.1
+      - ASVS-V4
+      - ASVS-V5
+    minimum_severity: none
+    expected_first_stage: none
+    baseline_expected_detection: none
+    expected_decision: PASS
+    deployment_expected: true
+    false_positive_control: null
+  - fixture_id: F07
+    control_id: F07-clean
+    vulnerability_class: low-severity-control
+    description: Controlled diagnostic logging pattern below the blocking threshold.
+    ground_truth: true
+    affected_asset: fixtures/controlled-app/F07-low/src/app.js
+    expected_tool: semgrep
+    requirement_ids:
+      - SSDF-PW.7
+      - ASVS-V10
+    minimum_severity: low
+    expected_first_stage: source
+    baseline_expected_detection: late-security
+    expected_decision: WARN
+    deployment_expected: true
+    false_positive_control: F07-clean
+  - fixture_id: F07-clean
+    control_id: null
+    vulnerability_class: clean-control
+    description: Safe counterpart without the low-severity diagnostic logging pattern.
+    ground_truth: false
+    affected_asset: fixtures/controlled-app/F07-clean/src/app.js
+    expected_tool: semgrep
+    requirement_ids:
+      - SSDF-PW.7
+      - ASVS-V10
+    minimum_severity: none
+    expected_first_stage: none
+    baseline_expected_detection: none
+    expected_decision: PASS
+    deployment_expected: true
+    false_positive_control: null
+  - fixture_id: F08
+    control_id: null
+    vulnerability_class: scanner-failure
+    description: Required source-analysis evidence is incomplete after a scanner failure.
+    ground_truth: false
+    affected_asset: fixtures/controlled-app/F08-failure/evidence.json
+    expected_tool: policy-decision
+    requirement_ids:
+      - SSDF-PO.3
+      - SSDF-PW.1
+      - ASVS-V14
+    minimum_severity: none
+    expected_first_stage: source
+    baseline_expected_detection: late-security
+    expected_decision: BLOCK
+    deployment_expected: false
+    false_positive_control: null

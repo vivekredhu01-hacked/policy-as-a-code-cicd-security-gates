@@ -44,30 +44,25 @@ the remaining **19 runs**.
 
 ## 2. Results
 
-> **Note:** Replace the placeholder values below with the actual measurements
-> from `results/measurements/overhead-<timestamp>.csv` after running the
-> measurement script.
+The measurements below are from
+`results/measurements/overhead-20261028-090249.csv`.
 
 ### 2.1 Raw Results
 
 | ID | Operation | N | Avg (ms) | Min (ms) | Max (ms) | SD (ms) |
 |---|---|---|---|---|---|---|
-| M1 | `kubectl --dry-run=client` (no policy) | 19 | 56.8 | 52.4 | 61.6 | 1.9 |
-| M2 | `conftest test` (all 29 manifests) | 19 | 56.3 | 53.7 | 59.6 | 1.7 |
-| M3 | `kubectl --dry-run=server` (allowed) | 19 | _pending_ | _pending_ | _pending_ | _pending_ |
-| M4 | `kubectl --dry-run=server` (rejected) | 19 | _pending_ | _pending_ | _pending_ | _pending_ |
-
-> M3 and M4 require Docker Desktop and the kind cluster with Gatekeeper.
-> Run `scripts/measure-overhead.ps1` again after starting the cluster to
-> collect these values.
+| M1 | `kubectl --dry-run=client` (no policy) | 19 | 65.5 | 62.6 | 70.2 | 2.1 |
+| M2 | `conftest test` (all 29 manifests) | 19 | 46.3 | 43.6 | 56.2 | 2.9 |
+| M3 | `kubectl --dry-run=server` (allowed) | 19 | 70.1 | 68.3 | 73.1 | 1.2 |
+| M4 | `kubectl --dry-run=server` (rejected) | 19 | 75.8 | 67.7 | 172.3 | 22.9 |
 
 ### 2.2 Derived Metrics
 
 | Metric | Value | Derivation |
 |---|---|---|
-| Conftest overhead vs. baseline | −0.5 ms | M2 avg (56.3) − M1 avg (56.8) |
-| Conftest overhead factor | 1.0× | M2 avg / M1 avg |
-| Admission rejection delta | _pending_ | M4 avg - M3 avg |
+| Conftest overhead vs. baseline | −19.2 ms | M2 avg (46.3) − M1 avg (65.5) |
+| Conftest overhead factor | 0.7× | M2 avg / M1 avg |
+| Admission rejection delta | 5.7 ms | M4 avg (75.8) − M3 avg (70.1) |
 
 ---
 
@@ -76,11 +71,12 @@ the remaining **19 runs**.
 ### 3.1 CI-Stage Overhead (M1 vs. M2)
 
 Conftest evaluation of 29 manifests against 9 deny rules completed in an
-average of 56.3 ms (SD 1.7 ms), compared to 56.8 ms (SD 1.9 ms) for a
-baseline `kubectl --dry-run=client` validation — a difference of −0.5 ms
-(overhead factor: 1.0×). The negative delta and overlapping standard
-deviations confirm that the policy evaluation time is indistinguishable
-from the baseline within measurement noise. In the context of a CI pipeline
+average of 46.3 ms (SD 2.9 ms), compared to 65.5 ms (SD 2.1 ms) for a
+baseline `kubectl --dry-run=client` validation — a difference of −19.2 ms
+(overhead factor: 0.7×). These operations process different workloads, so
+this difference should not be interpreted as policy evaluation making
+Kubernetes validation faster. It is a local timing comparison within the
+proof-of-concept scope. In the context of a CI pipeline
 where typical job durations are measured in tens of seconds (repository
 checkout, dependency installation, image build, test suite), an additional
 sub-millisecond cost for policy evaluation is operationally negligible.
@@ -92,8 +88,11 @@ for a small policy set (5 files, 9 rules).
 
 ### 3.2 Admission-Stage Overhead (M3 vs. M4)
 
-_Pending: requires Docker Desktop and kind cluster with Gatekeeper. Re-run
-`scripts/measure-overhead.ps1` after starting the cluster._
+The allowed admission request averaged 70.1 ms (SD 1.2 ms), while the
+rejected request averaged 75.8 ms (SD 22.9 ms), giving a rejection delta of
+5.7 ms. The rejected-request maximum of 172.3 ms indicates an occasional
+latency spike; the standard deviation should therefore be reported alongside
+the average.
 
 <!-- Expected interpretation:
 The difference between an allowed request (M3) and a rejected request (M4)
@@ -121,15 +120,15 @@ round-trip time.
 
 ## 4. CSV Data
 
-Raw measurement data is stored in `results/measurements/overhead-20260421-123458.csv`
+Raw measurement data is stored in `results/measurements/overhead-20261028-090249.csv`
 with the following schema:
 
 ```
 Id,Operation,Iterations,AvgMs,MinMs,MaxMs,SdMs,AllMs
-M1,"kubectl --dry-run=client (no policy)",19,56.8,52.4,61.6,1.9,<r1>;...;<r19>
-M2,"conftest test (all manifests)",19,56.3,53.7,59.6,1.7,<r1>;...;<r19>
-M3,"kubectl --dry-run=server (allowed)",19,<pending>
-M4,"kubectl --dry-run=server (rejected)",19,<pending>
+M1,"kubectl --dry-run=client (no policy)",19,65.5,62.6,70.2,2.1,<r1>;...;<r19>
+M2,"conftest test (all manifests)",19,46.3,43.6,56.2,2.9,<r1>;...;<r19>
+M3,"kubectl --dry-run=server (allowed)",19,70.1,68.3,73.1,1.2,<r1>;...;<r19>
+M4,"kubectl --dry-run=server (rejected)",19,75.8,67.7,172.3,22.9,<r1>;...;<r19>
 ```
 
 The `AllMs` column contains the individual run times separated by semicolons,

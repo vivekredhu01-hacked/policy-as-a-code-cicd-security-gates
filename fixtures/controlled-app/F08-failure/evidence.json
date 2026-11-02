@@ -1,0 +1,25 @@
+{
+  "schema_version": "evidence-document/v1",
+  "run": {
+    "run_id": "fixture-f08",
+    "fixture_id": "F08",
+    "commit_id": "REPLACE_WITH_COMMIT",
+    "pipeline": "proposed",
+    "stage": "source"
+  },
+  "gate": {
+    "gate_id": "source-analysis",
+    "required": true,
+    "completed": false,
+    "tool_exit_code": 7,
+    "tool_version": "fixture"
+  },
+  "findings": [],
+  "normalization": {
+    "status": "partial",
+    "adapter_version": "0.1.0",
+    "raw_artifacts": [
+      "artifacts/f08/failed-scan.json"
+    ]
+  }
+}
