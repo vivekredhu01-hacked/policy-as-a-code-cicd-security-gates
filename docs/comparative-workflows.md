@@ -9,6 +9,8 @@ The repository provides three GitHub Actions workflows:
   `pipeline: baseline`.
 - `source-security-gates.yml` executes Gitleaks or Semgrep for F01/F02 and
   their clean controls, then normalizes and evaluates the result.
+- `scanner-security-gates.yml` executes Dependency-Check, Trivy, or ZAP for
+  F03-F05 and their clean controls, then normalizes and evaluates the result.
 
 The baseline and proposed workflows deliberately accept an evidence path
 rather than silently running different scanner configurations. This makes the
@@ -37,9 +39,9 @@ Examples:
 
 The workflows fail when the decision is `BLOCK`, remain successful for
 `PASS`/`WARN`, and always upload the normalized evidence and decision output.
-The source workflow also uploads the scanner's raw report. Dependency-Check,
-Trivy, and ZAP remain separate until their tool-specific cache, image, service,
-and credential requirements are configured for GitHub-hosted runners.
+The scanner workflows also upload each scanner's raw report. F03 requires an
+`NVD_API_KEY` repository secret; F04 builds the fixture image locally; and F05
+starts the fixture server and scans it from a ZAP container.
 
 For a valid comparative run, use the same commit and evidence path for both
 workflow conditions, then record:

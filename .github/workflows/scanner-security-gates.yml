@@ -1,0 +1,192 @@
+name: Scanner security gates
+
+on:
+  workflow_dispatch:
+    inputs:
+      fixture_id:
+        description: F03, F03-clean, F04, F04-clean, F05, or F05-clean
+        required: true
+        type: choice
+        options:
+          - F03
+          - F03-clean
+          - F04
+          - F04-clean
+          - F05
+          - F05-clean
+      pipeline:
+        description: Comparative pipeline condition
+        required: true
+        type: choice
+        options:
+          - proposed
+          - baseline
+
+permissions:
+  contents: read
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out fixture commit
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Conftest
+        shell: bash
+        run: |
+          set -euo pipefail
+          version="0.67.1"
+          curl --fail --location --silent --show-error \
+            "https://github.com/open-policy-agent/conftest/releases/download/v${version}/conftest_${version}_Linux_x86_64.tar.gz" \
+            | tar -xz -C /tmp
+          sudo install /tmp/conftest /usr/local/bin/conftest
+
+      - name: Install Dependency-Check
+        if: inputs.fixture_id == 'F03' || inputs.fixture_id == 'F03-clean'
+        shell: bash
+        run: |
+          set -euo pipefail
+          version="12.1.0"
+          curl --fail --location --silent --show-error \
+            "https://github.com/jeremylong/DependencyCheck/releases/download/v${version}/dependency-check-${version}-release.zip" \
+            -o /tmp/dependency-check.zip
+          sudo unzip -q /tmp/dependency-check.zip -d /opt
+          sudo ln -s "/opt/dependency-check/bin/dependency-check.sh" /usr/local/bin/dependency-check
+          dependency-check --version
+
+      - name: Cache Dependency-Check database
+        if: inputs.fixture_id == 'F03' || inputs.fixture_id == 'F03-clean'
+        uses: actions/cache@v4
+        with:
+          path: .cache/dependency-check
+          key: dependency-check-${{ runner.os }}-${{ hashFiles('fixtures/controlled-app/F03*/package-lock.json') }}
+
+      - name: Install Trivy
+        if: inputs.fixture_id == 'F04' || inputs.fixture_id == 'F04-clean'
+        uses: aquasecurity/setup-trivy@v0.2.3
+        with:
+          version: v0.68.1
+
+      - name: Run scanner, normalize evidence, and evaluate policy
+        shell: bash
+        env:
+          FIXTURE_ID: ${{ inputs.fixture_id }}
+          PIPELINE: ${{ inputs.pipeline }}
+          COMMIT_ID: ${{ github.sha }}
+          RUN_ID: github-${{ github.run_id }}
+          NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/workflow
+          gate_id=""
+          stage=""
+          scanner_exit=0
+
+          case "$FIXTURE_ID" in
+            F03|F03-clean)
+              if [ -z "$NVD_API_KEY" ]; then
+                echo "NVD_API_KEY repository secret is required for F03." >&2
+                exit 2
+              fi
+              source_path="fixtures/controlled-app/F03-dependency"
+              if [ "$FIXTURE_ID" = "F03-clean" ]; then
+                source_path="fixtures/controlled-app/F03-clean"
+              fi
+              gate_id="dependency-analysis"
+              stage="dependencies"
+              set +e
+              dependency-check \
+                --project "policy-reuse-evaluation-${FIXTURE_ID}" \
+                --scan "$source_path" \
+                --format JSON \
+                --data .cache/dependency-check \
+                --out artifacts/workflow \
+                --nvdApiKey "$NVD_API_KEY"
+              scanner_exit=$?
+              set -e
+              report="artifacts/workflow/dependency-check-report.json"
+              python scripts/normalize-dependency-check.py \
+                --report "$report" \
+                --output artifacts/workflow/evidence.json \
+                --fixture-id "$FIXTURE_ID" --commit-id "$COMMIT_ID" \
+                --pipeline "$PIPELINE" --stage "$stage" --run-id "$RUN_ID" \
+                --tool-version "$(dependency-check --version)" \
+                --exit-code "$scanner_exit" --raw-artifact "$report"
+              ;;
+            F04|F04-clean)
+              source_path="fixtures/controlled-app/F04-container"
+              if [ "$FIXTURE_ID" = "F04-clean" ]; then
+                source_path="fixtures/controlled-app/F04-clean"
+              fi
+              gate_id="container-analysis"
+              stage="container"
+              image="policy-gate-${FIXTURE_ID,,}:github-${GITHUB_RUN_ID}"
+              docker build --tag "$image" "$source_path"
+              set +e
+              trivy image --scanners vuln --format json --output artifacts/workflow/trivy.json \
+                --exit-code 1 "$image"
+              scanner_exit=$?
+              set -e
+              python scripts/normalize-trivy.py \
+                --report artifacts/workflow/trivy.json \
+                --output artifacts/workflow/evidence.json \
+                --fixture-id "$FIXTURE_ID" --commit-id "$COMMIT_ID" \
+                --pipeline "$PIPELINE" --stage "$stage" --run-id "$RUN_ID" \
+                --tool-version "$(trivy version --format json | python -c 'import json,sys; print(json.load(sys.stdin)["Version"])')" \
+                --exit-code "$scanner_exit" --raw-artifact artifacts/workflow/trivy.json
+              ;;
+            F05|F05-clean)
+              source_path="fixtures/controlled-app/F05-runtime/vulnerable"
+              if [ "$FIXTURE_ID" = "F05-clean" ]; then
+                source_path="fixtures/controlled-app/F05-runtime/clean"
+              fi
+              gate_id="runtime-analysis"
+              stage="runtime"
+              python "$source_path/server.py" > artifacts/workflow/server.log 2>&1 &
+              server_pid=$!
+              trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+              sleep 2
+              set +e
+              docker run --rm --network host -v "$PWD/artifacts/workflow:/zap/wrk:rw" \
+                ghcr.io/zaproxy/zaproxy:stable zap-full-scan.py \
+                -t "http://127.0.0.1:8000/?q=test" -J zap.json -r zap.html
+              scanner_exit=$?
+              set -e
+              python scripts/normalize-zap.py \
+                --report artifacts/workflow/zap.json \
+                --output artifacts/workflow/evidence.json \
+                --fixture-id "$FIXTURE_ID" --commit-id "$COMMIT_ID" \
+                --pipeline "$PIPELINE" --stage "$stage" --run-id "$RUN_ID" \
+                --tool-version "zaproxy-stable" \
+                --exit-code "$scanner_exit" --raw-artifact artifacts/workflow/zap.json
+              ;;
+            *)
+              echo "Unsupported fixture: $FIXTURE_ID" >&2
+              exit 2
+              ;;
+          esac
+
+          set +e
+          python scripts/run-security-decision.py \
+            --evidence artifacts/workflow/evidence.json \
+            --output artifacts/workflow/decision.json \
+            --fixture-id "$FIXTURE_ID" --commit-id "$COMMIT_ID" \
+            --pipeline "$PIPELINE" --stage "$stage" --gate-id "$gate_id" \
+            --run-id "$RUN_ID"
+          decision_exit=$?
+          set -e
+          cat artifacts/workflow/decision.json
+          exit "$decision_exit"
+
+      - name: Upload scanner security artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: scanner-security-${{ inputs.fixture_id }}-${{ inputs.pipeline }}-${{ github.run_id }}
+          path: artifacts/workflow/
