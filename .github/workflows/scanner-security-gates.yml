@@ -69,9 +69,15 @@ jobs:
 
       - name: Install Trivy
         if: inputs.fixture_id == 'F04' || inputs.fixture_id == 'F04-clean'
-        uses: aquasecurity/setup-trivy@v0.2.3
-        with:
-          version: v0.68.1
+        shell: bash
+        run: |
+          set -euo pipefail
+          version="0.76.1"
+          curl --fail --location --silent --show-error \
+            "https://github.com/aquasecurity/trivy/releases/download/v${version}/trivy_${version}_Linux-64bit.tar.gz" \
+            | tar -xz -C /tmp trivy
+          sudo install /tmp/trivy /usr/local/bin/trivy
+          trivy version
 
       - name: Run scanner, normalize evidence, and evaluate policy
         shell: bash
