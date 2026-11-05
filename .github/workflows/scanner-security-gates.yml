@@ -158,6 +158,7 @@ jobs:
               server_pid=$!
               trap 'kill "$server_pid" 2>/dev/null || true' EXIT
               sleep 2
+              chmod a+rwx artifacts/workflow
               set +e
               docker run --rm --network host -v "$PWD/artifacts/workflow:/zap/wrk:rw" \
                 ghcr.io/zaproxy/zaproxy:stable zap-full-scan.py \
